@@ -9,5 +9,48 @@ package com.kma.sms.model;
  * @author author's_name_goes_here
  */
 public class Student {
+
+//     CREATE TABLE students (
+//     student_id VARCHAR(20) PRIMARY KEY,
+//     class_id VARCHAR(20),
+//     student_name VARCHAR(60) CHARACTER SET utf8mb4 NOT NULL,
+//     date_of_birth DATE,
+//     gender BIT, -- 1 for male, 0 for female
+//     address VARCHAR(100) CHARACTER SET utf8mb4,
+//     telephone VARCHAR(20),
+//     FOREIGN KEY (class_id) REFERENCES classes(class_id)
+// );
+
+    // Basic info
+    private String studentId;
+    private String classId;
+    private String studentName;
+    private String dateOfBirth;
+    private boolean gender;
+    private String address;
+    private String telephone;
     
+
+    // Constructor
+    public Student(String studentId, String classId, String studentName, String dateOfBirth, boolean gender, String address, String telephone) {
+        this.studentId = studentId;
+        this.classId = classId;
+        this.studentName = studentName;
+        this.dateOfBirth = dateOfBirth;
+        this.gender = gender;
+        this.address = address;
+        this.telephone = telephone;
+
+    }
+
+
+
 }
+
+
+
+
+
+
+
+

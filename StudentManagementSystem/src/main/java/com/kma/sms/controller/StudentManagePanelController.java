@@ -8,7 +8,6 @@ package com.kma.sms.controller;
  *
  * @author lxsgo
  */
-public class StudentController {
-    
+public class StudentManagePanelController {
     
 }
