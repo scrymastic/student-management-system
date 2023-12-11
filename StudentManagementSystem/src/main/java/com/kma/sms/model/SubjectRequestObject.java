@@ -6,25 +6,16 @@ package com.kma.sms.model;
 
 /**
  *
- * @author lxsgo
+ * @author Admin
  */
-public class Subject {
-//     CREATE TABLE subjects (
-//     subject_id VARCHAR(40) PRIMARY KEY,
-//     major_id VARCHAR(20),
-//     subject_name VARCHAR(100) CHARACTER SET utf8mb4,
-//     number_of_credits INT CHECK (number_of_credits > 0),
-//     FOREIGN KEY (major_id) REFERENCES majors(major_id)
-// );
-
-    // Basic info
+public class SubjectRequestObject {
     private String subjectId;
     private String majorId;
     private String subjectName;
     private String numberOfCredits;
 
     // Constructor
-    public Subject(String subjectId, String majorId, String subjectName, String numberOfCredits) {
+    public SubjectRequestObject(String subjectId, String majorId, String subjectName, String numberOfCredits) {
         this.subjectId = subjectId;
         this.majorId = majorId;
         this.subjectName = subjectName;
