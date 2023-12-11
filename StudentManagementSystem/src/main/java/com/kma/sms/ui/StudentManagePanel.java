@@ -124,9 +124,6 @@ public class StudentManagePanel extends javax.swing.JPanel {
         String classId = classIdInput.getText();
         String studentName = studentNameInput.getText();
 
-        System.out.println(studentId);
-        System.out.println(classId);
-        System.out.println(studentName);
 
         // Get result
         List<List<String>> result = StudentManagePanelController.getStudentListString(studentId, classId, studentName,

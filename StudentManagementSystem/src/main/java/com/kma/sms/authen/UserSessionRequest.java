@@ -4,22 +4,26 @@
  */
 package com.kma.sms.authen;
 
-
 /**
  *
- * @author author's_name_goes_here
+ * @author lxsgo
  */
-public class UserSession {
-    public static UserSession userSession;
+public class UserSessionRequest {
     String username;
     String password;
-    Boolean isAdmin = false;
-    
-    public UserSession(String username, String password) {
+
+    public UserSessionRequest(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
+    // gettter and setter
+    public String getUsername() {
+        return username;
+    }
 
-
+    public String getPassword() {
+        return password;
+    }
+    
 }
