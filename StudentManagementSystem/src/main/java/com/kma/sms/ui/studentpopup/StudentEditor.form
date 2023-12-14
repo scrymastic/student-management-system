@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="studentIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="classIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="studentNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="63" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="classIdEditor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="studentIdEditor" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="studentNameEditor" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="dateOfBirthLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="telephoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="addressEditor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="telephoneEditor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dateOfBirthEditor" alignment="0" pref="200" max="32767" attributes="0"/>
+                                  <Component id="genderEditor" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                      <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="56" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="studentIdEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="studentIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="classIdEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="classIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="studentNameEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dateOfBirthEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="dateOfBirthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="addressEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="telephoneEditor" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="telephoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="43" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="telephoneLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="S&#x110;T:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="classIdEditor">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="classIdEditorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="cancelButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="cancel"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="studentNameEditor">
+    </Component>
+    <Component class="javax.swing.JButton" name="saveButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="save"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dateOfBirthLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ng&#xe0;y sinh:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressEditor">
+    </Component>
+    <Component class="javax.swing.JTextField" name="dateOfBirthEditor">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateOfBirthEditorActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="telephoneEditor">
+    </Component>
+    <Component class="javax.swing.JLabel" name="studentIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; sv:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="classIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="studentNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="genderLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gi&#x1edb;i t&#xed;nh:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="studentIdEditor">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="genderEditor">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Nam"/>
+            <StringItem index="1" value="N&#x1eef;"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genderEditorActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>

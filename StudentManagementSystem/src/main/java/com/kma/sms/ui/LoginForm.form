@@ -26,7 +26,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="UserNameInputField" min="-2" pref="219" max="-2" attributes="0"/>
+                      <Component id="userNameInputField" min="-2" pref="219" max="-2" attributes="0"/>
                       <Component id="PasswordInputField" min="-2" pref="219" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -39,7 +39,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="UserNameInputField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userNameInputField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="userNamePanel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -55,12 +55,12 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JTextField" name="UserNameInputField">
+    <Component class="javax.swing.JTextField" name="userNameInputField">
       <Properties>
         <Property name="text" type="java.lang.String" value="user name"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UserNameInputFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="userNameInputFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="PasswordInputField">

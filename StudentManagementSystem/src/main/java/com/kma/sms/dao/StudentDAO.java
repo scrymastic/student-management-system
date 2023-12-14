@@ -27,6 +27,7 @@ public class StudentDAO {
         try (Connection connection = DatabaseConnection.connect()) {
             Statement statement = connection.createStatement();
             String query = "SELECT * FROM students WHERE ";
+            // SELECT * FROM students WHERE student_name COLLATE utf8mb4_bin LIKE '%hà%'
             if (studentRequest.getStudentId() != null) {
                 query += "student_id LIKE '%" + studentRequest.getStudentId() + "%'";
                 query += " AND ";
@@ -36,10 +37,11 @@ public class StudentDAO {
                 query += " AND ";
             }
             if (studentRequest.getStudentName() != null) {
-                query += "student_name LIKE '%" + studentRequest.getStudentName() + "%'";
+                query += "student_name COLLATE utf8mb4_bin LIKE '%" + studentRequest.getStudentName() + "%'";
                 query += " AND ";
             }
-            if ((studentRequest.getLowerBoundOfDateOfBirth() != null) && (studentRequest.getUpperBoundOfDateOfBirth() != null)) {
+            if ((studentRequest.getLowerBoundOfDateOfBirth() != null)
+                    && (studentRequest.getUpperBoundOfDateOfBirth() != null)) {
                 query += "date_of_birth BETWEEN '" + studentRequest.getLowerBoundOfDateOfBirth() + "' AND '"
                         + studentRequest.getUpperBoundOfDateOfBirth() + "'";
                 query += " AND ";
@@ -56,7 +58,7 @@ public class StudentDAO {
                 query += " AND ";
             }
             if (studentRequest.getAddress() != null) {
-                query += "address LIKE '%" + studentRequest.getAddress() + "%'";
+                query += "address COLLATE utf8mb4_bin LIKE '%" + studentRequest.getAddress() + "%'";
                 query += " AND ";
             }
             if (studentRequest.getTelephone() != null) {
@@ -90,11 +92,36 @@ public class StudentDAO {
             }
 
             return ResultStudents;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             // Handle any SQL exceptions.
             e.printStackTrace();
             return null;
+        }
+
+    }
+
+    // Modify student by student class
+    public static int EditStudentInfo(Student student) {
+        // Connect to database
+        try (Connection connection = DatabaseConnection.connect()) {
+            Statement statement = connection.createStatement();
+            String query = "UPDATE students SET ";
+            query += "class_id = '" + student.getClassId() + "', ";
+            query += "student_name = '" + student.getStudentName() + "', ";
+            query += "date_of_birth = '" + student.getDateOfBirth() + "', ";
+            query += "gender = " + student.getGender() + ", ";
+            query += "address = '" + student.getAddress() + "', ";
+            query += "telephone = '" + student.getTelephone() + "' ";
+            query += "WHERE student_id = '" + student.getStudentId() + "'";
+            System.out.println(query);
+            int result = statement.executeUpdate(query);
+
+            return result;
+
+        } catch (SQLException e) {
+            // Handle any SQL exceptions.
+            e.printStackTrace();
+            return 0;
         }
 
     }

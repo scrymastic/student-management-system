@@ -42,7 +42,7 @@ public class StudentManagePanelController {
         return studentListString;
     }
 
-    public static List<Student> sendSearchRequestAndReceiveStudentList(String studentId, String classId, 
+    private static List<Student> sendSearchRequestAndReceiveStudentList(String studentId, String classId, 
                                                         String studentName, String lowerBoundOfDateOfBirth, 
                                                         String upperBoundOfDateOfBirth, String gender, 
                                                         String address, String telephone) {
@@ -53,7 +53,7 @@ public class StudentManagePanelController {
         if (lowerBoundOfDateOfBirth.isEmpty()) lowerBoundOfDateOfBirth = null;
         if (upperBoundOfDateOfBirth.isEmpty()) upperBoundOfDateOfBirth = null;
         Boolean genderBoolean = null;
-        if (gender.isEmpty()) genderBoolean = null;
+        if (gender.isEmpty() || gender.equalsIgnoreCase("all")) genderBoolean = null;
         else genderBoolean = gender.equalsIgnoreCase("nam") ? true : false;
         if (address.isEmpty()) address = null;
         if (telephone.isEmpty()) telephone = null;

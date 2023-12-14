@@ -28,16 +28,16 @@ public class LoginForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UserNameInputField = new javax.swing.JTextField();
+        userNameInputField = new javax.swing.JTextField();
         PasswordInputField = new javax.swing.JPasswordField();
         userNamePanel = new javax.swing.JLabel();
         passwordPanel = new javax.swing.JLabel();
         loginButton = new javax.swing.JButton();
 
-        UserNameInputField.setText("user name");
-        UserNameInputField.addActionListener(new java.awt.event.ActionListener() {
+        userNameInputField.setText("user name");
+        userNameInputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UserNameInputFieldActionPerformed(evt);
+                userNameInputFieldActionPerformed(evt);
             }
         });
 
@@ -67,7 +67,7 @@ public class LoginForm extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(loginButton)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(UserNameInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userNameInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(PasswordInputField, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
@@ -76,7 +76,7 @@ public class LoginForm extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(99, 99, 99)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UserNameInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(userNameInputField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(userNamePanel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -88,13 +88,13 @@ public class LoginForm extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UserNameInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserNameInputFieldActionPerformed
+    private void userNameInputFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameInputFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UserNameInputFieldActionPerformed
+    }//GEN-LAST:event_userNameInputFieldActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // Get user name and password
-        String username = UserNameInputField.getText();
+        String username = userNameInputField.getText();
         char[] passwordChars = PasswordInputField.getPassword();
         String password = new String(passwordChars);
 
@@ -105,9 +105,9 @@ public class LoginForm extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField PasswordInputField;
-    private javax.swing.JTextField UserNameInputField;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel passwordPanel;
+    private javax.swing.JTextField userNameInputField;
     private javax.swing.JLabel userNamePanel;
     // End of variables declaration//GEN-END:variables
 }

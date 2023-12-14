@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JPopupMenu" name="popupMenu">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+        <Property name="useNullLayout" type="boolean" value="true"/>
+      </Layout>
+      <SubComponents>
+        <MenuItem class="javax.swing.JMenuItem" name="editItem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="edit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editItemActionPerformed"/>
+          </Events>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="deleteItem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="delete"/>
+          </Properties>
+        </MenuItem>
+        <MenuItem class="javax.swing.JMenuItem" name="propertyItem">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="properties"/>
+          </Properties>
+        </MenuItem>
+      </SubComponents>
+    </Container>
+  </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,11 +44,14 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jScrollPane1" alignment="0" pref="560" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="classIdLabel" max="32767" attributes="0"/>
                           <Component id="studentIdlabel" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
@@ -29,47 +60,62 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="studentIdInput" max="32767" attributes="0"/>
-                          <Component id="classIdInput" alignment="0" max="32767" attributes="0"/>
-                          <Component id="studentNameInput" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="studentNameInput" alignment="0" max="32767" attributes="0"/>
+                          <Component id="classIdInput" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="genderInput" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressInput" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
+          <Component id="tableScrollPane" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="studentIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentIdlabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="classIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="classIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="studentNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="246" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="tableScrollPane" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="studentIdInput">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentIdInputActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="classIdInput">
       <Events>
@@ -77,8 +123,63 @@
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="studentNameInput">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentNameInputActionPerformed"/>
+      </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Component class="javax.swing.JLabel" name="studentIdlabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; sv:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="classIdLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="studentNameLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="searchStudentButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Search"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchStudentButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="genderInput">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="All"/>
+            <StringItem index="1" value="Nam"/>
+            <StringItem index="2" value="N&#x1eef;"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="genderInputActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="genderLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gi&#x1edb;i t&#xed;nh:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="addressInput">
+    </Component>
+    <Component class="javax.swing.JLabel" name="addressLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x110;&#x1ecb;a ch&#x1ec9;:"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="tableScrollPane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -88,15 +189,15 @@
         <Component class="javax.swing.JTable" name="studentTable">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="8" rowCount="1">
-                <Column editable="true" title="STT" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; sv" type="java.lang.Object"/>
-                <Column editable="true" title="M&#xe3; l&#x1edb;p" type="java.lang.Object"/>
-                <Column editable="true" title="H&#x1ecd; t&#xea;n" type="java.lang.Object"/>
-                <Column editable="true" title="Ng&#xe0;y sinh" type="java.lang.Object"/>
-                <Column editable="true" title="Gi&#x1edb;i t&#xed;nh" type="java.lang.Object"/>
-                <Column editable="true" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.Object"/>
-                <Column editable="true" title="S&#x110;T" type="java.lang.Object"/>
+              <Table columnCount="8" rowCount="0">
+                <Column editable="false" title="STT" type="java.lang.Integer"/>
+                <Column editable="false" title="M&#xe3; sv" type="java.lang.String"/>
+                <Column editable="false" title="M&#xe3; l&#x1edb;p" type="java.lang.String"/>
+                <Column editable="false" title="H&#x1ecd; t&#xea;n" type="java.lang.String"/>
+                <Column editable="false" title="Ng&#xe0;y sinh" type="java.lang.String"/>
+                <Column editable="false" title="Gi&#x1edb;i t&#xed;nh" type="java.lang.String"/>
+                <Column editable="false" title="&#x110;&#x1ecb;a ch&#x1ec9;" type="java.lang.String"/>
+                <Column editable="false" title="S&#x110;T" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -147,31 +248,12 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="studentTableMouseReleased"/>
+            <EventHandler event="componentResized" listener="java.awt.event.ComponentListener" parameters="java.awt.event.ComponentEvent" handler="studentTableComponentResized"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="studentIdlabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe3; sv:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="classIdLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="M&#xe3; l&#x1edb;p:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="studentNameLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="H&#x1ecd; t&#xea;n:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="searchStudentButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Search"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchStudentButtonActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>
