@@ -101,7 +101,7 @@ public class StudentDAO {
     }
 
     // Modify student by student class
-    public static int EditStudentInfo(Student student) {
+    public static int editStudentInfo(Student student) {
         // Connect to database
         try (Connection connection = DatabaseConnection.connect()) {
             Statement statement = connection.createStatement();
@@ -121,6 +121,72 @@ public class StudentDAO {
         } catch (SQLException e) {
             // Handle any SQL exceptions.
             e.printStackTrace();
+            return 0;
+        }
+
+    }
+
+    // Delete student by student id
+    public static int deleteStudent(String studentId) {
+        // Connect to database
+        try (Connection connection = DatabaseConnection.connect()) {
+            connection.setAutoCommit(false); // Start transaction
+
+            try (Statement statement = connection.createStatement()) {
+                // SQL to delete student's scores
+                String deleteScoresSql = "DELETE FROM scores WHERE student_id = '" + studentId + "'";
+                statement.executeUpdate(deleteScoresSql);
+
+                // SQL to delete student
+                String deleteStudentSql = "DELETE FROM students WHERE student_id = '" + studentId + "'";
+                statement.executeUpdate(deleteStudentSql);
+
+                connection.commit(); // Commit transaction
+                return 1; // Successful deletion
+            } catch (SQLException e) {
+                connection.rollback(); // Rollback transaction in case of error
+                throw e; // Re-throw the exception to be caught in the outer catch block
+            }
+
+        } catch (SQLException e) {
+            // Handle any SQL exceptions.
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+
+    // Add student by student class
+    public static int addStudent(Student student) {
+        // Connect to database
+        try (Connection connection = DatabaseConnection.connect()) {
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO students VALUES (";
+            query += "'" + student.getStudentId() + "', ";
+            if (student.getClassId() != null) query += "'" + student.getClassId() + "', ";
+            else query += "NULL, ";
+            query += "'" + student.getStudentName() + "', ";
+            if (student.getDateOfBirth() != null) query += "'" + student.getDateOfBirth() + "', ";
+            else query += "NULL, ";
+            if (student.getGender() != null) query += student.getGender() + ", ";
+            else query += "NULL, ";
+            if (student.getAddress() != null) query += "'" + student.getAddress() + "', ";
+            else query += "NULL, ";
+            if (student.getTelephone() != null) query += "'" + student.getTelephone() + "'";
+            else query += "NULL";
+            query += ")";
+
+            System.out.println(query);
+            int result = statement.executeUpdate(query);
+
+            return result;
+
+        } catch (SQLException e) {
+            // Handle any SQL exceptions.
+            e.printStackTrace();
+            // Check if the student id already exists
+            if (e.getErrorCode() == 1062) return 2;
+
             return 0;
         }
 

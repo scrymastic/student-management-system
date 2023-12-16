@@ -10,16 +10,13 @@ package com.kma.sms.authen;
  * @author author's_name_goes_here
  */
 public class UserSession {
-    public static UserSession userSession;
-    String username;
-    String password;
-    Boolean isAdmin = false;
-    
-    public UserSession(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public static Boolean isAdmin;
+
+    public static Boolean getIsAdmin() {
+        return isAdmin;
     }
 
-
-
+    public static void setIsAdmin(Boolean isAdmin) {
+        UserSession.isAdmin = isAdmin;
+    }
 }

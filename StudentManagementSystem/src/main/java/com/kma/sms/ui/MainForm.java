@@ -25,6 +25,13 @@ public class MainForm extends javax.swing.JFrame {
         contentPanel.add(new StudentManagePanel(), "studentManagePanel");
         contentPanel.add(new ScoreManagePanel(), "scoreManagePanel");
         // cardLayout.show(contentPanel, "homePagePanel");
+
+        // always fit the content panel to the parent panel
+        this.pack();
+        contentPanel.revalidate();
+
+        
+
     }
 
     /** Creates new form MainForm */
@@ -131,11 +138,17 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        contentPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                contentPanelComponentResized(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 581, Short.MAX_VALUE)
+            .addGap(0, 542, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,9 +172,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(naviPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -195,6 +206,11 @@ public class MainForm extends javax.swing.JFrame {
         cardLayout.show(contentPanel, "scoreManagePanel");
         
     }//GEN-LAST:event_scoreMangeNaviButtonActionPerformed
+
+    private void contentPanelComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_contentPanelComponentResized
+
+
+    }//GEN-LAST:event_contentPanelComponentResized
 
     /**
      * @param args the command line arguments

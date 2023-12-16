@@ -9,6 +9,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 import com.kma.sms.controller.StudentManagePanelController;
+import com.kma.sms.controller.studentpopup.StudentDeleterController;
 import com.kma.sms.ui.studentpopup.*;
 
 /**
@@ -31,6 +32,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -51,6 +53,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
         addressLabel = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
+        addStudentButton = new javax.swing.JButton();
 
         editItem.setText("edit");
         editItem.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +64,19 @@ public class StudentManagePanel extends javax.swing.JPanel {
         popupMenu.add(editItem);
 
         deleteItem.setText("delete");
+        deleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteItemActionPerformed(evt);
+            }
+        });
         popupMenu.add(deleteItem);
 
         propertyItem.setText("properties");
+        propertyItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                propertyItemActionPerformed(evt);
+            }
+        });
         popupMenu.add(propertyItem);
 
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
@@ -143,43 +156,54 @@ public class StudentManagePanel extends javax.swing.JPanel {
         });
         tableScrollPane.setViewportView(studentTable);
 
+        addStudentButton.setText("Add");
+        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStudentButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchStudentButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(searchStudentButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(classIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(studentIdlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(studentNameLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(studentIdInput)
-                            .addComponent(studentNameInput)
-                            .addComponent(classIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genderLabel)
-                            .addComponent(addressLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(genderInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(addressInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(15, Short.MAX_VALUE))
-            .addComponent(tableScrollPane)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(classIdInput)
+                                    .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(genderLabel)
+                                    .addComponent(addressLabel))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(genderInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(addressInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(addStudentButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(searchStudentButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchStudentButton)
+                    .addComponent(addStudentButton))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentIdlabel)
@@ -195,25 +219,62 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentNameLabel))
-                .addGap(18, 18, 18)
-                .addComponent(tableScrollPane)
+                .addGap(27, 27, 27)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void genderInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genderInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_genderInputActionPerformed
+    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
+        // Show add student popup ui.studentpopup.StudentAdder
+        StudentAdder addStudent = new StudentAdder();
 
-    private void studentNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentNameInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentNameInputActionPerformed
+        // Set popup menu location, center of the screen
+        int x = this.getX() + this.getWidth() / 2 - addStudent.getWidth() / 2;
+        int y = this.getY() + this.getHeight() / 2 - addStudent.getHeight() / 2;
+        addStudent.setLocation(x, y);
 
-    private void studentIdInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentIdInputActionPerformed
+        // Add listener for add student popup
+        addStudent.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                // Update table
+                updateTable();
+            }
+        });
 
-    private void editItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItemActionPerformed
+        // Show popup
+        addStudent.setVisible(true);
+
+
+    }//GEN-LAST:event_addStudentButtonActionPerformed
+
+    private void studentTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_studentTableComponentResized
+        // Get table width
+        int tableWidth = studentTable.getWidth();
+        // Set column width percent
+        int[] columnWidthPercent = { 5, 10, 10, 20, 10, 10, 25, 10 };
+        // Set table column width
+        for (int i = 0; i < studentTable.getColumnCount(); i++) {
+            javax.swing.table.TableColumn column = studentTable.getColumnModel().getColumn(i);
+            column.setPreferredWidth(tableWidth * columnWidthPercent[i] / 100);
+        }
+        
+    }//GEN-LAST:event_studentTableComponentResized
+
+    private void genderInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_genderInputActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_genderInputActionPerformed
+
+    private void studentNameInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_studentNameInputActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_studentNameInputActionPerformed
+
+    private void studentIdInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_studentIdInputActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_studentIdInputActionPerformed
+
+    private void editItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_editItemActionPerformed
         // Show edit student popup ui.studentpopup.EditStudent1
         StudentEditor editStudent = new StudentEditor();
 
@@ -253,10 +314,9 @@ public class StudentManagePanel extends javax.swing.JPanel {
         // Show popup
         editStudent.setVisible(true);
 
+    }// GEN-LAST:event_editItemActionPerformed
 
-    }//GEN-LAST:event_editItemActionPerformed
-
-    private void studentTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentTableMouseReleased
+    private void studentTableMouseReleased(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_studentTableMouseReleased
         // Show popup menu
         if (evt.isPopupTrigger()) {
             // Get coordinates of mouse click
@@ -268,22 +328,36 @@ public class StudentManagePanel extends javax.swing.JPanel {
 
         }
 
-    }//GEN-LAST:event_studentTableMouseReleased
+    }// GEN-LAST:event_studentTableMouseReleased
 
-    private void studentTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_studentTableComponentResized
-        // Resize table size
-        int width = studentTable.getWidth();
-        // Set column width
-        studentTable.getColumnModel().getColumn(0).setPreferredWidth((int) (width * 0.05));
-        studentTable.getColumnModel().getColumn(1).setPreferredWidth((int) (width * 0.1));
-        studentTable.getColumnModel().getColumn(2).setPreferredWidth((int) (width * 0.1));
-        studentTable.getColumnModel().getColumn(3).setPreferredWidth((int) (width * 0.2));
-        studentTable.getColumnModel().getColumn(4).setPreferredWidth((int) (width * 0.1));
-        studentTable.getColumnModel().getColumn(5).setPreferredWidth((int) (width * 0.1));
-        studentTable.getColumnModel().getColumn(6).setPreferredWidth((int) (width * 0.25));
-        studentTable.getColumnModel().getColumn(7).setPreferredWidth((int) (width * 0.1));
+    private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_deleteItemActionPerformed
+        String studentId = studentTable.getValueAt(studentTable.getSelectedRow(), 1).toString();
+        String studentName = studentTable.getValueAt(studentTable.getSelectedRow(), 3).toString();
+        String message = "<html><div style='text-align: center;'>"
+            + "Bạn có chắc muốn xóa sinh viên " + studentId + " - " + studentName + "?<br>"
+            + "Lưu ý: Toàn bộ thông tin liên quan đến sinh viên này sẽ bị xóa<br>"
+            + "và không thể hoàn tác."
+            + "</div></html>";
 
-    }//GEN-LAST:event_studentTableComponentResized
+        javax.swing.JLabel messageLabel = new javax.swing.JLabel(message);
+        int option = javax.swing.JOptionPane.showConfirmDialog(null, messageLabel, "Xác nhận xóa",
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+        // If user click yes
+        if (option == javax.swing.JOptionPane.YES_OPTION) {
+            // Delete student
+            String result = StudentDeleterController.getStudentDeleteMessage(studentId);
+            // Show result
+            javax.swing.JOptionPane.showMessageDialog(null, result);
+            // Update table
+            updateTable();
+        }
+
+    }// GEN-LAST:event_deleteItemActionPerformed
+
+    private void propertyItemActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_propertyItemActionPerformed
+        // TODO add your handling code here:
+    }// GEN-LAST:event_propertyItemActionPerformed
 
     private void searchStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_searchStudentButtonActionPerformed
         updateTable();
@@ -294,7 +368,6 @@ public class StudentManagePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }// GEN-LAST:event_classIdInputActionPerformed
 
-
     public void updateTable() {
         // Get input
         String studentId = studentIdInput.getText();
@@ -303,7 +376,6 @@ public class StudentManagePanel extends javax.swing.JPanel {
         // Get gender from combobox
         String gender = genderInput.getSelectedItem().toString();
         String address = addressInput.getText();
-
 
         // Get result
         List<List<String>> result = StudentManagePanelController.getStudentListString(studentId, classId, studentName,
@@ -325,8 +397,8 @@ public class StudentManagePanel extends javax.swing.JPanel {
     }
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addStudentButton;
     private javax.swing.JTextField addressInput;
     private javax.swing.JLabel addressLabel;
     private javax.swing.JTextField classIdInput;

@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.kma.sms;
-import com.kma.sms.ui.MainForm;
+import com.kma.sms.ui.LoginForm;
 
-import com.kma.sms.authen.UserSession;
 
 /**
  *
@@ -13,12 +12,12 @@ import com.kma.sms.authen.UserSession;
  */
 public class StudentManagementSystem {
 
-    /* User sesstion */
-    public static UserSession userSession;
-
     public static void main(String[] args) {
-        MainForm mainForm = new MainForm();
-        mainForm.setVisible(true);
+        // Show login form
+        LoginForm loginForm = new LoginForm();
+        // Set location of login form
+        loginForm.setLocationRelativeTo(null);
+        loginForm.setVisible(true);
     }
     
 }

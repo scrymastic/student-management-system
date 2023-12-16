@@ -4,8 +4,12 @@
  */
 package com.kma.sms.dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import com.kma.sms.authen.UserSession;
 import com.kma.sms.authen.UserSessionRequest;
+import com.kma.sms.util.DatabaseConnection;
 /**
  *
  * @author lxsgo
@@ -13,6 +17,27 @@ import com.kma.sms.authen.UserSessionRequest;
 public class UserDAO {
 
     public static int login(UserSessionRequest userSessionRequest) {
+        try (Connection connection = DatabaseConnection.connect()){
+            String query = "SELECT * FROM accounts WHERE username = '" + userSessionRequest.getUsername() + "' AND password = '" + userSessionRequest.getPassword() + "'";
+            System.out.println(query);
+            java.sql.Statement statement = connection.createStatement();
+
+            // check if user exists
+            java.sql.ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet.next()) {
+                Boolean isAdmin = resultSet.getBoolean("is_admin");
+                // create user session
+                UserSession.setIsAdmin(isAdmin);
+                return 1;
+            }
+            else {
+                return 0;
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+         
+        }
         return 0;
     }
     

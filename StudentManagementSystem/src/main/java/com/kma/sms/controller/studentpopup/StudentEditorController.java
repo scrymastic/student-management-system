@@ -49,7 +49,7 @@ public class StudentEditorController {
         Student student = new Student(studentId, classId, studentName, dateOfBirth, gender, address, telephone);
         // Send the request
         // Receive the response
-        int response = StudentDAO.EditStudentInfo(student);
+        int response = StudentDAO.editStudentInfo(student);
 
         return response;
     }

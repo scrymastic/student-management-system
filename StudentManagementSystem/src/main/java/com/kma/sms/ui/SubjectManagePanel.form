@@ -21,7 +21,7 @@
               <Component id="subjectIdLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="subjectIdInput" min="-2" pref="73" max="-2" attributes="0"/>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="majorIdLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="majorIdInput" min="-2" pref="49" max="-2" attributes="0"/>
