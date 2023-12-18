@@ -10,9 +10,9 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/StudentInfoDB";
+    private static final String URL = "jdbc:mysql://localhost:3306/studentInfoDB";
     private static final String USER = "root";
-    private static final String PASSWORD = "123456aA@";
+    private static final String PASSWORD = "long";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);

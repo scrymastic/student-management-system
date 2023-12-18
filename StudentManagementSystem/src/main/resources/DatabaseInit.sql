@@ -99,7 +99,7 @@ CREATE TABLE students (
     class_id VARCHAR(20),
     student_name VARCHAR(60) CHARACTER SET utf8mb4 NOT NULL,
     date_of_birth DATE,
-    gender BIT, -- 1 for male, 0 for female
+    gender T, -- 1 for male, 0 for female
     address VARCHAR(100) CHARACTER SET utf8mb4,
     telephone VARCHAR(20),
     FOREIGN KEY (class_id) REFERENCES classes(class_id)
