@@ -98,6 +98,11 @@ public class StudentManagePanel extends javax.swing.JPanel {
         });
 
         studentIdlabel.setText("Mã sv:");
+        studentIdlabel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentIdlabelFocusLost(evt);
+            }
+        });
 
         classIdLabel.setText("Mã lớp:");
 
@@ -219,9 +224,9 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentNameLabel))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -261,6 +266,10 @@ public class StudentManagePanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_studentTableComponentResized
+
+    private void studentIdlabelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentIdlabelFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentIdlabelFocusLost
 
     private void genderInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_genderInputActionPerformed
         // TODO add your handling code here:

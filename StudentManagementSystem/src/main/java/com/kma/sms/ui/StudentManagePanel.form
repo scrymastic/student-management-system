@@ -116,9 +116,9 @@
                   <Component id="studentNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="tableScrollPane" min="-2" pref="406" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="15" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -143,6 +143,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="M&#xe3; sv:"/>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="studentIdlabelFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="classIdLabel">
       <Properties>
