@@ -49,4 +49,77 @@ public class SubjectDAO {
             return null;
         }
     }
+    
+    public static int addSubject(Subject subject){
+        try(Connection connection = DatabaseConnection.connect()){
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO subjects VALUES (";
+            query += "'" + subject.getSubjectId() + "', ";
+            if (subject.getMajorId() != null) query += "'" + subject.getMajorId() + "', ";
+            else query += "NULL, ";
+            query += "'" + subject.getSubjectName() + "', ";
+            if (subject.getNumberOfCredits() != null) query +=  subject.getNumberOfCredits() + " ";
+            else query += "NULL, ";
+            query += ")";
+            
+            System.out.println(query);
+            int result = statement.executeUpdate(query);
+
+            return result;
+        }
+        catch (SQLException e) {
+            // Handle any SQL exceptions.
+            e.printStackTrace();
+            // Check if the student id already exists
+            if (e.getErrorCode() == 1062) return 2;
+
+            return 0;
+        }
+    }
+    
+    public static int editSubjectInfo(Subject subject,String subjectIdOld){
+        try (Connection connection = DatabaseConnection.connect()) {
+            Statement statement = connection.createStatement();
+            String query = "UPDATE subjects SET ";
+            query += "subject_id = '" + subject.getSubjectId() + "', ";
+            query += "major_id = '" + subject.getMajorId() + "', ";
+            query += "subject_name = '" + subject.getSubjectName() + "', ";
+            query += "number_of_credits = " + subject.getNumberOfCredits();
+            query += " WHERE subject_id = '" + subjectIdOld + "'";
+            System.out.println(query);
+            int result = statement.executeUpdate(query);
+
+            return result;
+
+        } catch (SQLException e) {
+            // Handle any SQL exceptions.
+            e.printStackTrace();
+            return 0;
+        }
+
+    }
+    
+    public static int deleteSubject(String subjectId) {
+        // Connect to database
+        try (Connection connection = DatabaseConnection.connect()) {
+            connection.setAutoCommit(false);
+
+            try (Statement statement = connection.createStatement()) {
+                String deleteScoresSql = "DELETE FROM scores WHERE subject_id = '" + subjectId + "'";
+                statement.executeUpdate(deleteScoresSql);
+                
+                String deleteSubjectSql = "DELETE FROM subjects WHERE subject_id = '" + subjectId + "'";
+                statement.executeUpdate(deleteSubjectSql);
+                System.out.println(deleteSubjectSql);
+                connection.commit(); 
+                return 1;
+            } catch (SQLException e) {
+                connection.rollback(); 
+                throw e; 
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

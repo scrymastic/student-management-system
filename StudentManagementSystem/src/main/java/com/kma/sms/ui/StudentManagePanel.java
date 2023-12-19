@@ -72,6 +72,8 @@ public class StudentManagePanel extends javax.swing.JPanel {
         });
         popupMenu.add(deleteItem);
 
+        setPreferredSize(new java.awt.Dimension(560, 500));
+
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentIdInputActionPerformed(evt);
@@ -91,6 +93,11 @@ public class StudentManagePanel extends javax.swing.JPanel {
         });
 
         studentIdlabel.setText("Mã sv:");
+        studentIdlabel.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                studentIdlabelFocusLost(evt);
+            }
+        });
 
         classIdLabel.setText("Mã lớp:");
 
@@ -169,30 +176,31 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(searchStudentButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addStudentButton)
+                .addContainerGap(377, Short.MAX_VALUE))
+            .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(classIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentIdlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(studentNameLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(classIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(studentIdlabel, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(studentNameLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(classIdInput)
+                            .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(classIdInput)
-                                    .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(genderLabel)
-                                    .addComponent(addressLabel))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(genderInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addressInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(addStudentButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genderLabel)
+                            .addComponent(addressLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(addressInput, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(genderInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +209,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchStudentButton)
                     .addComponent(addStudentButton))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentIdlabel)
@@ -217,8 +225,8 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentNameLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footerLabel))
         );
@@ -233,9 +241,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
         StudentAdder addStudent = new StudentAdder();
 
         // Set popup menu location, center of the screen
-        int x = this.getX() + this.getWidth() / 2 - addStudent.getWidth() / 2;
-        int y = this.getY() + this.getHeight() / 2 - addStudent.getHeight() / 2;
-        addStudent.setLocation(x, y);
+        addStudent.setLocationRelativeTo(this);
 
         // Add listener for add student popup
         addStudent.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -264,6 +270,10 @@ public class StudentManagePanel extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_studentTableComponentResized
+
+    private void studentIdlabelFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_studentIdlabelFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentIdlabelFocusLost
 
     private void genderInputActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_genderInputActionPerformed
         // TODO add your handling code here:
@@ -301,9 +311,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
         editStudent.setTelephoneEditor(telephone);
 
         // Set popup menu location, center of the screen
-        int x = this.getX() + this.getWidth() / 2 - editStudent.getWidth() / 2;
-        int y = this.getY() + this.getHeight() / 2 - editStudent.getHeight() / 2;
-        editStudent.setLocation(x, y);
+        editStudent.setLocationRelativeTo(this);
 
         // Add listener for edit student popup
         editStudent.addWindowListener(new java.awt.event.WindowAdapter() {

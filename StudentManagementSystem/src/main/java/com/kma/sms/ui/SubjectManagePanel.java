@@ -7,7 +7,10 @@ package com.kma.sms.ui;
 import java.awt.Dimension;
 import java.util.List;
 import com.kma.sms.controller.SubjectManagePanelController;
+import com.kma.sms.controller.subjectpopup.SubjectDeleterController;
+import com.kma.sms.ui.subjectpopup.*;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author lxsgo
@@ -30,18 +33,41 @@ public class SubjectManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMenu = new javax.swing.JPopupMenu();
+        editItem = new javax.swing.JMenuItem();
+        deleteItem = new javax.swing.JMenuItem();
         subjectIdInput = new javax.swing.JTextField();
         subjectNameInput = new javax.swing.JTextField();
         majorIdInput = new javax.swing.JComboBox<>();
-        subjectIdLabel = new javax.swing.JLabel();
-        majorIdLabel = new javax.swing.JLabel();
-        subjectNameLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         subjectTable = new javax.swing.JTable();
         searchSubjectButton = new javax.swing.JButton();
-        creditsLabel = new javax.swing.JLabel();
         creditsInput = new javax.swing.JTextField();
+        addSubjectButton = new javax.swing.JButton();
+        subjectIdLabel = new javax.swing.JLabel();
+        majorIdLabel = new javax.swing.JLabel();
+        subjectNameLabel = new javax.swing.JLabel();
+        creditsLabel = new javax.swing.JLabel();
         footerLabel = new javax.swing.JLabel();
+
+        editItem.setText("edit");
+        editItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editItemActionPerformed(evt);
+            }
+        });
+        popupMenu.add(editItem);
+
+        deleteItem.setText("delete");
+        deleteItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteItemActionPerformed(evt);
+            }
+        });
+        popupMenu.add(deleteItem);
+
+        setPreferredSize(new java.awt.Dimension(560, 500));
+        setVerifyInputWhenFocusTarget(false);
 
         subjectIdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,39 +88,32 @@ public class SubjectManagePanel extends javax.swing.JPanel {
             }
         });
 
-        subjectIdLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        subjectIdLabel.setText("Mã học phần :");
-
-        majorIdLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        majorIdLabel.setText("Mã ngành :");
-        majorIdLabel.setToolTipText("");
-
-        subjectNameLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        subjectNameLabel.setText("Mã học phần :");
-
         subjectTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã học phần", "Mã ngành", "Tên học phần", "Số tín chỉ"
             }
         ));
+        subjectTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                subjectTableMouseReleased(evt);
+            }
+        });
+        subjectTable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                subjectTableComponentResized(evt);
+            }
+        });
         jScrollPane1.setViewportView(subjectTable);
 
-        searchSubjectButton.setBackground(new java.awt.Color(204, 255, 255));
         searchSubjectButton.setText("Search");
         searchSubjectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchSubjectButtonActionPerformed(evt);
             }
         });
-
-        creditsLabel.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        creditsLabel.setText("Số TC :");
 
         creditsInput.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
         creditsInput.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +122,26 @@ public class SubjectManagePanel extends javax.swing.JPanel {
             }
         });
 
-        footerLabel.setText("                                    ");
+        addSubjectButton.setText("Add");
+        addSubjectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addSubjectButtonActionPerformed(evt);
+            }
+        });
+
+        subjectIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        subjectIdLabel.setText("Mã học phần:");
+
+        majorIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        majorIdLabel.setText("Mã ngành:");
+
+        subjectNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        subjectNameLabel.setText("Tên học phần:");
+
+        creditsLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        creditsLabel.setText("Số tín chỉ:");
+
+        footerLabel.setText("                              ");
         footerLabel.setEnabled(false);
         footerLabel.setFocusable(false);
 
@@ -111,46 +149,52 @@ public class SubjectManagePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(subjectIdLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subjectIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(majorIdLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(majorIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(subjectNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subjectNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(creditsLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(creditsInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(searchSubjectButton)
-                .addContainerGap())
-            .addComponent(jScrollPane1)
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(subjectNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(majorIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subjectNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(creditsInput, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(subjectIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(majorIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(addSubjectButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchSubjectButton))))
+                .addContainerGap(194, Short.MAX_VALUE))
             .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subjectIdInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(subjectIdLabel)
-                        .addComponent(majorIdLabel)
-                        .addComponent(majorIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(subjectNameLabel)
-                        .addComponent(subjectNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(searchSubjectButton)
-                        .addComponent(creditsLabel)
-                        .addComponent(creditsInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subjectIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectIdLabel)
+                    .addComponent(searchSubjectButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(majorIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(majorIdLabel)
+                    .addComponent(addSubjectButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subjectNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(creditsInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(creditsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footerLabel))
         );
@@ -201,14 +245,137 @@ public class SubjectManagePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_creditsInputActionPerformed
 
+    private void addSubjectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addSubjectButtonActionPerformed
+        // TODO add your handling code here:
+        SubjectAdder addSubject = new SubjectAdder();
+        addSubject.setLocationRelativeTo(this);
+        // Add listener for add student popup
+        addSubject.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                // Update table
+                updateTable();
+            }
+        });
+
+        // Show popup
+        addSubject.setVisible(true);
+
+    }//GEN-LAST:event_addSubjectButtonActionPerformed
+
+    private void subjectTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_subjectTableComponentResized
+        // TODO add your handling code here:
+        int tableWidth = subjectTable.getWidth();
+        int[] columnWidthPercent = { 5, 10, 10, 20, 10, 10, 25, 10 };
+        for (int i = 0; i < subjectTable.getColumnCount(); i++) {
+            javax.swing.table.TableColumn column = subjectTable.getColumnModel().getColumn(i);
+            column.setPreferredWidth(tableWidth * columnWidthPercent[i] / 100);
+        }
+    }//GEN-LAST:event_subjectTableComponentResized
+
+    private void subjectTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_subjectTableMouseReleased
+        // TODO add your handling code here:
+        if (evt.isPopupTrigger()) {
+            // Get coordinates of mouse click
+            int row = subjectTable.rowAtPoint(evt.getPoint());
+            // Select row
+            subjectTable.setRowSelectionInterval(row, row);
+            // Show popup menu
+            popupMenu.show(subjectTable, evt.getX(), evt.getY());
+
+        }
+    }//GEN-LAST:event_subjectTableMouseReleased
+
+    private void editItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editItemActionPerformed
+        // TODO add your handling code here:
+        SubjectEditor editSubject = new SubjectEditor();
+        int row = subjectTable.getSelectedRow();
+        String subjectIdOld = subjectTable.getValueAt(row, 1).toString();
+        String subjectId = subjectTable.getValueAt(row, 1).toString();
+        String majorId = subjectTable.getValueAt(row, 2).toString();
+        String subjectName = subjectTable.getValueAt(row, 3).toString();
+        String credits = subjectTable.getValueAt(row, 4).toString();
+        
+        editSubject.setSubjectIdOld(subjectIdOld);
+        editSubject.setSubjectIdEditor(subjectId);
+        editSubject.setMajorIdEditor(majorId);
+        editSubject.setSubjectNameEditor(subjectName);
+        editSubject.setCreditsEditor(credits);
+        
+        editSubject.setLocationRelativeTo(this);
+
+
+        // Add listener for edit student popup
+        editSubject.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                // Update table
+                updateTable();
+            }
+        });
+
+        // Show popup
+        editSubject.setVisible(true);
+    }//GEN-LAST:event_editItemActionPerformed
+
+    private void deleteItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteItemActionPerformed
+        // TODO add your handling code here:
+        String subjectId = subjectTable.getValueAt(subjectTable.getSelectedRow(), 1).toString();
+        String subjectName = subjectTable.getValueAt(subjectTable.getSelectedRow(), 3).toString();
+        String message = "<html><div style='text-align: center;'>"
+            + "Bạn có chắc muốn xóa học phần " + subjectId + " - " + subjectName + "?<br>"
+            + "Lưu ý: Toàn bộ thông tin liên quan đến học phần này sẽ bị xóa<br>"
+            + "và không thể hoàn tác."
+            + "</div></html>";
+
+        javax.swing.JLabel messageLabel = new javax.swing.JLabel(message);
+        int option = javax.swing.JOptionPane.showConfirmDialog(null, messageLabel, "Xác nhận xóa",
+            javax.swing.JOptionPane.YES_NO_OPTION);
+
+        // If user click yes
+        if (option == javax.swing.JOptionPane.YES_OPTION) {
+            // Delete student
+            String result = SubjectDeleterController.getSubjectDeleteMessage(subjectId);
+            // Show result
+            javax.swing.JOptionPane.showMessageDialog(null, result);
+            // Update table
+            updateTable();
+        }
+        
+    }//GEN-LAST:event_deleteItemActionPerformed
+
+    public void updateTable(){
+        String subjectId = subjectIdInput.getText();
+        String majorId = majorIdInput.getSelectedItem().toString();
+        String subjectName = subjectNameInput.getText();
+        String credits = creditsInput.getText();
+        
+        List<List<String>> result = SubjectManagePanelController.getSubjectListString(subjectId,majorId,subjectName,credits);
+        DefaultTableModel model = (DefaultTableModel) subjectTable.getModel();
+        model.setRowCount(result.size());
+
+        // Display result
+        for (int i = 0; i < result.size(); i++) {
+            List<String> studentString = result.get(i);
+            // Display order number
+            studentString.add(0, Integer.toString(i + 1));
+            for (int j = 0; j < studentString.size(); j++) {
+                subjectTable.setValueAt(studentString.get(j), i, j);
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addSubjectButton;
     private javax.swing.JTextField creditsInput;
     private javax.swing.JLabel creditsLabel;
+    private javax.swing.JMenuItem deleteItem;
+    private javax.swing.JMenuItem editItem;
     private javax.swing.JLabel footerLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> majorIdInput;
     private javax.swing.JLabel majorIdLabel;
+    private javax.swing.JPopupMenu popupMenu;
     private javax.swing.JButton searchSubjectButton;
     private javax.swing.JTextField subjectIdInput;
     private javax.swing.JLabel subjectIdLabel;
