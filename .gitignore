@@ -65,3 +65,7 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/java,netbeans,windows
 /StudentManagementSystem/target/
+
+# database.properties
+/src/main/resources/application.properties
+

@@ -31,52 +31,21 @@ public class Subject {
         this.numberOfCredits = numberOfCredits;
     }
 
+    // Getters and setters
     public String getSubjectId() {
         return subjectId;
-    }
-
-    public void setSubjectId(String subjectId) {
-        this.subjectId = subjectId;
     }
 
     public String getMajorId() {
         return majorId;
     }
 
-    public void setMajorId(String majorId) {
-        this.majorId = majorId;
-    }
-
     public String getSubjectName() {
         return subjectName;
     }
 
-    public void setSubjectName(String subjectName) {
-        this.subjectName = subjectName;
-    }
-
-    public int getNumberOfCredits() {
+    public String getNumberOfCredits() {
         return numberOfCredits;
     }
 
-    public void setNumberOfCredits(int numberOfCredits) {
-        this.numberOfCredits = numberOfCredits;
-    }
-    
-    public String getSubjectId(){
-        return subjectId;
-    }
-    
-    public String getMajorId(){
-        return majorId;
-    }
-    
-    public String getSubjectName(){
-        return subjectName;
-    }
-    
-    public String getNumberOfCredits(){
-        return numberOfCredits;
-    }
-    
 }

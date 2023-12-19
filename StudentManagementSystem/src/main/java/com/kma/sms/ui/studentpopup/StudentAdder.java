@@ -189,13 +189,14 @@ public class StudentAdder extends javax.swing.JFrame {
 
         // Send request and receive response
         String errorMessage = StudentAdderController.getStudentSAddMessage(studentId, classId, studentName, dateOfBirth, gender, address, telephone);
-        // Dispose this frame
-        this.dispose();
-
         // Show message
         if (!errorMessage.isEmpty()) {
-            // If there is error, show error message
+            // If not success, do not dispose this frame
+            if (errorMessage.equals("Thêm sinh viên thành công")) {
+                this.dispose();
+            }
             javax.swing.JOptionPane.showMessageDialog(this, errorMessage);
+            
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 

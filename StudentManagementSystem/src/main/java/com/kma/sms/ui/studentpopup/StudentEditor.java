@@ -4,10 +4,8 @@
  */
 package com.kma.sms.ui.studentpopup;
 
-import java.rmi.StubNotFoundException;
 
-import com.kma.sms.controller.studentpopup.*;
-import com.kma.sms.ui.StudentManagePanel;
+import com.kma.sms.controller.studentpopup.StudentEditorController;
 
 /**
  *

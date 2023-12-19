@@ -20,8 +20,16 @@ public class StudentAdderController {
             message = "Mã sinh viên và tên sinh viên không được để trống";
             return message;
         }
+        else {
+            // uppercase all characters in studentId
+            studentId = studentId.toUpperCase();
+        }
         if (classId.isEmpty()) {
             classId = null;
+        }
+        else {
+            // uppercase all characters in classId
+            classId = classId.toUpperCase();
         }
         // check if dateOfBirth is valid
         if (dateOfBirth.isEmpty()) {

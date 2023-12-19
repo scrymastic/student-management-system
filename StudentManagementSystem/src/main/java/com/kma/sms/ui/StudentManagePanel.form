@@ -24,14 +24,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteItemActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="propertyItem">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="properties"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="propertyItemActionPerformed"/>
-          </Events>
-        </MenuItem>
       </SubComponents>
     </Container>
   </NonVisualComponents>
@@ -50,8 +42,8 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tableScrollPane" alignment="0" pref="605" max="32767" attributes="0"/>
-          <Group type="102" alignment="0" attributes="0">
+          <Component id="tableScrollPane" alignment="0" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -87,6 +79,7 @@
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
+          <Component id="footerLabel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -97,7 +90,7 @@
                   <Component id="searchStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="studentIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentIdlabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -116,9 +109,10 @@
                   <Component id="studentNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-              <Component id="tableScrollPane" min="-2" pref="406" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Component id="tableScrollPane" min="-2" pref="335" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="footerLabel" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -274,6 +268,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addStudentButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="footerLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                        "/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Dimension preferredSize = footerLabel.getPreferredSize();&#xa;preferredSize.height = 30;&#xa;footerLabel.setPreferredSize(preferredSize);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

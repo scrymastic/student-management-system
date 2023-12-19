@@ -4,6 +4,7 @@
  */
 package com.kma.sms.ui;
 
+import java.awt.Dimension;
 import java.util.List;
 import com.kma.sms.controller.SubjectManagePanelController;
 import javax.swing.table.DefaultTableModel;
@@ -40,6 +41,7 @@ public class SubjectManagePanel extends javax.swing.JPanel {
         searchSubjectButton = new javax.swing.JButton();
         creditsLabel = new javax.swing.JLabel();
         creditsInput = new javax.swing.JTextField();
+        footerLabel = new javax.swing.JLabel();
 
         subjectIdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,6 +103,10 @@ public class SubjectManagePanel extends javax.swing.JPanel {
             }
         });
 
+        footerLabel.setText("                                    ");
+        footerLabel.setEnabled(false);
+        footerLabel.setFocusable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +115,7 @@ public class SubjectManagePanel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(subjectIdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subjectIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(subjectIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(majorIdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,13 +132,14 @@ public class SubjectManagePanel extends javax.swing.JPanel {
                 .addComponent(searchSubjectButton)
                 .addContainerGap())
             .addComponent(jScrollPane1)
+            .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(subjectIdInput, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(subjectIdInput, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(subjectIdLabel)
                         .addComponent(majorIdLabel)
@@ -142,10 +149,15 @@ public class SubjectManagePanel extends javax.swing.JPanel {
                         .addComponent(searchSubjectButton)
                         .addComponent(creditsLabel)
                         .addComponent(creditsInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLabel))
         );
+
+        Dimension preferredSize = footerLabel.getPreferredSize();
+        preferredSize.height = 30;
+        footerLabel.setPreferredSize(preferredSize);
     }// </editor-fold>//GEN-END:initComponents
 
     private void subjectNameInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectNameInputActionPerformed
@@ -193,6 +205,7 @@ public class SubjectManagePanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField creditsInput;
     private javax.swing.JLabel creditsLabel;
+    private javax.swing.JLabel footerLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> majorIdInput;
     private javax.swing.JLabel majorIdLabel;

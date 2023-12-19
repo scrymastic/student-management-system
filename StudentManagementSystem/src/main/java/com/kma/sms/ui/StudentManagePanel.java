@@ -4,6 +4,7 @@
  */
 package com.kma.sms.ui;
 
+import java.awt.Dimension;
 import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
@@ -39,7 +40,6 @@ public class StudentManagePanel extends javax.swing.JPanel {
         popupMenu = new javax.swing.JPopupMenu();
         editItem = new javax.swing.JMenuItem();
         deleteItem = new javax.swing.JMenuItem();
-        propertyItem = new javax.swing.JMenuItem();
         studentIdInput = new javax.swing.JTextField();
         classIdInput = new javax.swing.JTextField();
         studentNameInput = new javax.swing.JTextField();
@@ -54,6 +54,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
         tableScrollPane = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
         addStudentButton = new javax.swing.JButton();
+        footerLabel = new javax.swing.JLabel();
 
         editItem.setText("edit");
         editItem.addActionListener(new java.awt.event.ActionListener() {
@@ -70,14 +71,6 @@ public class StudentManagePanel extends javax.swing.JPanel {
             }
         });
         popupMenu.add(deleteItem);
-
-        propertyItem.setText("properties");
-        propertyItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                propertyItemActionPerformed(evt);
-            }
-        });
-        popupMenu.add(propertyItem);
 
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,11 +156,15 @@ public class StudentManagePanel extends javax.swing.JPanel {
             }
         });
 
+        footerLabel.setText("                        ");
+        footerLabel.setEnabled(false);
+        footerLabel.setFocusable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+            .addComponent(tableScrollPane)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(searchStudentButton)
@@ -195,6 +192,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
                             .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(addStudentButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,10 +217,15 @@ public class StudentManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(studentNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(studentNameLabel))
-                .addGap(27, 27, 27)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLabel))
         );
+
+        Dimension preferredSize = footerLabel.getPreferredSize();
+        preferredSize.height = 30;
+        footerLabel.setPreferredSize(preferredSize);
     }// </editor-fold>//GEN-END:initComponents
 
     private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
@@ -297,9 +300,9 @@ public class StudentManagePanel extends javax.swing.JPanel {
         editStudent.setAddressEditor(address);
         editStudent.setTelephoneEditor(telephone);
 
-        // Set popup menu location
-        int x = studentTable.getX() + studentTable.getWidth() / 2 - editStudent.getWidth() / 2;
-        int y = studentTable.getY() + studentTable.getHeight() / 2 - editStudent.getHeight() / 2;
+        // Set popup menu location, center of the screen
+        int x = this.getX() + this.getWidth() / 2 - editStudent.getWidth() / 2;
+        int y = this.getY() + this.getHeight() / 2 - editStudent.getHeight() / 2;
         editStudent.setLocation(x, y);
 
         // Add listener for edit student popup
@@ -405,10 +408,10 @@ public class StudentManagePanel extends javax.swing.JPanel {
     private javax.swing.JLabel classIdLabel;
     private javax.swing.JMenuItem deleteItem;
     private javax.swing.JMenuItem editItem;
+    private javax.swing.JLabel footerLabel;
     private javax.swing.JComboBox<String> genderInput;
     private javax.swing.JLabel genderLabel;
     private javax.swing.JPopupMenu popupMenu;
-    private javax.swing.JMenuItem propertyItem;
     private javax.swing.JButton searchStudentButton;
     private javax.swing.JTextField studentIdInput;
     private javax.swing.JLabel studentIdlabel;

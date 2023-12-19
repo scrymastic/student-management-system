@@ -6,6 +6,14 @@
 package com.kma.sms.ui;
 
 import java.awt.CardLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 
 /**
@@ -20,7 +28,7 @@ public class MainForm extends javax.swing.JFrame {
         contentPanel.setLayout(cardLayout);
         // contentPanel.add(new HomePagePanel(), "homePagePanel");
         // contentPanel.add(new DepartmentDirPanel(), "departmentDirPanel");
-        // contentPanel.add(new ClassDirPanel(), "classDirPanel");
+        contentPanel.add(new ClassManagePanel(), "classManagePanel");
         contentPanel.add(new SubjectManagePanel(), "subjectManagePanel");
         contentPanel.add(new StudentManagePanel(), "studentManagePanel");
         contentPanel.add(new ScoreManagePanel(), "scoreManagePanel");
@@ -29,10 +37,8 @@ public class MainForm extends javax.swing.JFrame {
         // always fit the content panel to the parent panel
         this.pack();
         contentPanel.revalidate();
-
-        
-
     }
+
 
     /** Creates new form MainForm */
     public MainForm() {
@@ -70,11 +76,13 @@ public class MainForm extends javax.swing.JFrame {
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 76, Short.MAX_VALUE)
+            .addGap(0, 125, Short.MAX_VALUE)
         );
 
+        homePageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         homePageNaviButton.setText("Trang chủ");
 
+        departmentDirNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         departmentDirNaviButton.setText("Danh mục khoa");
         departmentDirNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +90,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        classDirNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         classDirNaviButton.setText("Danh mục lớp");
         classDirNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +98,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        subjectManageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         subjectManageNaviButton.setText("Quản lý môn");
         subjectManageNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +106,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        studentManageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         studentManageNaviButton.setText("Quản lý sv");
         studentManageNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,6 +114,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        scoreMangeNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         scoreMangeNaviButton.setText("Quản lý điểm");
         scoreMangeNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,11 +160,11 @@ public class MainForm extends javax.swing.JFrame {
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 542, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGap(0, 283, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -163,7 +175,8 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(naviPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +185,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(naviPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -183,7 +198,11 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_departmentDirNaviButtonActionPerformed
 
     private void classDirNaviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDirNaviButtonActionPerformed
-        // TODO add your handling code here:
+        // Show class manage panel and hide other panels
+        CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+        cardLayout.show(contentPanel, "classManagePanel");
+
+        
     }//GEN-LAST:event_classDirNaviButtonActionPerformed
 
     private void subjectManageNaviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectManageNaviButtonActionPerformed
@@ -242,7 +261,11 @@ public class MainForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainForm().setVisible(true);
+                    
+                MainForm mainForm = new MainForm();
+                mainForm.setLocationRelativeTo(null);
+
+                mainForm.setVisible(true);
             }
         });
     }

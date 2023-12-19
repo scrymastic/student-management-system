@@ -23,10 +23,25 @@ public class StudentManagePanelController {
                                                 String studentName, String lowerBoundOfDateOfBirth, 
                                                 String upperBoundOfDateOfBirth, String gender, 
                                                 String address, String telephone) {
-        List<Student> studentList = sendSearchRequestAndReceiveStudentList(studentId, classId,
-                                                                    studentName, lowerBoundOfDateOfBirth,
-                                                                    upperBoundOfDateOfBirth, gender,
-                                                                    address, telephone);
+        
+                                                            // If a field is empty, I will set it to null
+        if (studentId.isEmpty()) studentId = null;
+        else studentId = studentId.toUpperCase();
+        if (classId.isEmpty()) classId = null;
+        else classId = classId.toUpperCase();
+        if (studentName.isEmpty()) studentName = null;
+        if (lowerBoundOfDateOfBirth.isEmpty()) lowerBoundOfDateOfBirth = null;
+        if (upperBoundOfDateOfBirth.isEmpty()) upperBoundOfDateOfBirth = null;
+        Boolean genderBoolean = null;
+        if (gender.isEmpty() || gender.equalsIgnoreCase("all")) genderBoolean = null;
+        else genderBoolean = gender.equalsIgnoreCase("nam") ? true : false;
+        if (address.isEmpty()) address = null;
+        if (telephone.isEmpty()) telephone = null;
+
+        List<Student> studentList = sendSearchRequestAndReceiveStudentList(studentId, classId, studentName, 
+                                                lowerBoundOfDateOfBirth, upperBoundOfDateOfBirth, 
+                                                genderBoolean, address, telephone);
+
         List<List<String>> studentListString = new ArrayList<List<String>>();
         for (Student student : studentList) {
             List<String> studentString = new ArrayList<String>();
@@ -42,24 +57,13 @@ public class StudentManagePanelController {
         return studentListString;
     }
 
-    private static List<Student> sendSearchRequestAndReceiveStudentList(String studentId, String classId, 
-                                                        String studentName, String lowerBoundOfDateOfBirth, 
-                                                        String upperBoundOfDateOfBirth, String gender, 
-                                                        String address, String telephone) {
-        // If a field is empty, I will set it to null
-        if (studentId.isEmpty()) studentId = null;
-        if (classId.isEmpty()) classId = null;
-        if (studentName.isEmpty()) studentName = null;
-        if (lowerBoundOfDateOfBirth.isEmpty()) lowerBoundOfDateOfBirth = null;
-        if (upperBoundOfDateOfBirth.isEmpty()) upperBoundOfDateOfBirth = null;
-        Boolean genderBoolean = null;
-        if (gender.isEmpty() || gender.equalsIgnoreCase("all")) genderBoolean = null;
-        else genderBoolean = gender.equalsIgnoreCase("nam") ? true : false;
-        if (address.isEmpty()) address = null;
-        if (telephone.isEmpty()) telephone = null;
+    private static List<Student> sendSearchRequestAndReceiveStudentList(String studentId, String classId,
+                                                String studentName, String lowerBoundOfDateOfBirth, 
+                                                String upperBoundOfDateOfBirth, Boolean gender, 
+                                                String address, String telephone) {
 
         // Construct the student object
-        StudentRequestObject studentRequestObject = new StudentRequestObject(studentId, classId, studentName, lowerBoundOfDateOfBirth, upperBoundOfDateOfBirth, genderBoolean, address, telephone);
+        StudentRequestObject studentRequestObject = new StudentRequestObject(studentId, classId, studentName, lowerBoundOfDateOfBirth, upperBoundOfDateOfBirth, gender, address, telephone);
 
         // Send the request to the DAO
         List<Student> studentList = StudentDAO.searchStudent(studentRequestObject);

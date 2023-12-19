@@ -20,7 +20,7 @@
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="subjectIdLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="subjectIdInput" min="-2" pref="73" max="-2" attributes="0"/>
+              <Component id="subjectIdInput" min="-2" pref="109" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="majorIdLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -38,14 +38,15 @@
               <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
+          <Component id="footerLabel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="subjectIdInput" alignment="1" max="32767" attributes="0"/>
+                  <Component id="subjectIdInput" alignment="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="subjectIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="majorIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -57,9 +58,10 @@
                       <Component id="creditsInput" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="498" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="328" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="footerLabel" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -201,6 +203,16 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="creditsInputActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="footerLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                                    "/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Dimension preferredSize = footerLabel.getPreferredSize();&#xa;preferredSize.height = 30;&#xa;footerLabel.setPreferredSize(preferredSize);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

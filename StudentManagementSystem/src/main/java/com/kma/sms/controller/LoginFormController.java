@@ -6,7 +6,6 @@ package com.kma.sms.controller;
 
 import com.kma.sms.authen.UserSessionRequest;
 
-import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.UserDAO;
 
 /**
@@ -21,6 +20,7 @@ public class LoginFormController {
             // Return error message, align center
             return "Vui lòng nhập tên đăng nhập và mật khẩu";
         }
+        
         int result = sendLoginRequestAndReceiveResponse(username, password);
         String message = "";
         switch (result) {

@@ -5,6 +5,8 @@
 package com.kma.sms.ui;
 
 import com.kma.sms.controller.ScoreManagePanelController;
+
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -31,26 +33,27 @@ public class ScoreManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        scoretb = new javax.swing.JTable();
-        txt_studentid = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        txtname = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtgpa = new javax.swing.JTextField();
-        txtsjid = new javax.swing.JTextField();
-        txtsjname = new javax.swing.JTextField();
-        txtsco = new javax.swing.JTextField();
-        btupdate = new javax.swing.JButton();
-        btdelete = new javax.swing.JButton();
-        btinsert = new javax.swing.JButton();
+        studentIdLabel = new javax.swing.JLabel();
+        scoreTableScrollPane = new javax.swing.JScrollPane();
+        scoreTable = new javax.swing.JTable();
+        studentIdInput = new javax.swing.JTextField();
+        searchButton = new javax.swing.JButton();
+        studentNameTextField = new javax.swing.JTextField();
+        gpaLabel = new javax.swing.JLabel();
+        gpaTextField = new javax.swing.JTextField();
+        subjectIdTextField = new javax.swing.JTextField();
+        subjectNameTextField = new javax.swing.JTextField();
+        scoreTextField = new javax.swing.JTextField();
+        updateButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        insertButton = new javax.swing.JButton();
+        footerLabel = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Mã sinh viên");
+        studentIdLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        studentIdLabel.setText("Mã sinh viên");
 
-        scoretb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        scoretb.setModel(new javax.swing.table.DefaultTableModel(
+        scoreTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        scoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -58,74 +61,78 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                 "Mã môn học", "Tên môn học", "Điểm"
             }
         ));
-        scoretb.setAlignmentX(1.0F);
-        scoretb.setAlignmentY(1.0F);
-        scoretb.addMouseListener(new java.awt.event.MouseAdapter() {
+        scoreTable.setAlignmentX(1.0F);
+        scoreTable.setAlignmentY(1.0F);
+        scoreTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                scoretbMouseClicked(evt);
+                scoreTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(scoretb);
+        scoreTableScrollPane.setViewportView(scoreTable);
 
-        txt_studentid.addActionListener(new java.awt.event.ActionListener() {
+        studentIdInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_studentidActionPerformed(evt);
+                studentIdInputActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Search");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchButton.setText("Search");
+        searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchButtonActionPerformed(evt);
             }
         });
 
-        txtname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtname.addActionListener(new java.awt.event.ActionListener() {
+        studentNameTextField.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        studentNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnameActionPerformed(evt);
+                studentNameTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("GPA");
+        gpaLabel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        gpaLabel.setText("GPA");
 
-        txtgpa.addActionListener(new java.awt.event.ActionListener() {
+        gpaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtgpaActionPerformed(evt);
+                gpaTextFieldActionPerformed(evt);
             }
         });
 
-        txtsjname.addActionListener(new java.awt.event.ActionListener() {
+        subjectNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsjnameActionPerformed(evt);
+                subjectNameTextFieldActionPerformed(evt);
             }
         });
 
-        btupdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btupdate.setText("UPDATE");
-        btupdate.addActionListener(new java.awt.event.ActionListener() {
+        updateButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        updateButton.setText("UPDATE");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btupdateActionPerformed(evt);
+                updateButtonActionPerformed(evt);
             }
         });
 
-        btdelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btdelete.setText("DELETE");
-        btdelete.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        deleteButton.setText("DELETE");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btdeleteActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
-        btinsert.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btinsert.setText("INSERT");
-        btinsert.addActionListener(new java.awt.event.ActionListener() {
+        insertButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        insertButton.setText("INSERT");
+        insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btinsertActionPerformed(evt);
+                insertButtonActionPerformed(evt);
             }
         });
+
+        footerLabel.setText("                              ");
+        footerLabel.setEnabled(false);
+        footerLabel.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -135,37 +142,36 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(studentIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txt_studentid, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1))
-                        .addContainerGap(265, Short.MAX_VALUE))
+                                .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(searchButton))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtname)
+                                .addComponent(studentNameTextField)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addComponent(jLabel4)
+                                .addComponent(gpaLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtgpa, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(gpaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtsjname, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
-                            .addComponent(txtsco, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtsjid))
+                            .addComponent(subjectNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+                            .addComponent(scoreTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(subjectIdTextField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btupdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btdelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btinsert, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(insertButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(23, 23, 23))))
+            .addComponent(scoreTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+            .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,174 +179,180 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(searchButton)
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txt_studentid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(studentIdLabel)
+                            .addComponent(studentIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtsjid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btupdate))
+                            .addComponent(subjectIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtsjname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btdelete)
-                            .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(subjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton)
+                            .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtsco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btinsert)
-                            .addComponent(txtgpa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                .addContainerGap())
+                            .addComponent(scoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(insertButton)
+                            .addComponent(gpaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gpaLabel))))
+                .addGap(18, 18, 18)
+                .addComponent(scoreTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(footerLabel))
         );
+
+        Dimension preferredSize = footerLabel.getPreferredSize();
+        preferredSize.height = 30;
+        footerLabel.setPreferredSize(preferredSize);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_studentidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_studentidActionPerformed
+    private void studentIdInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentIdInputActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_studentidActionPerformed
+    }//GEN-LAST:event_studentIdInputActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String studentId = txt_studentid.getText();
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+        String studentId = studentIdInput.getText();
         
          List<List<String>> result = ScoreManagePanelController.getScoreListString(studentId);
         // Set table row count
-        DefaultTableModel model = (DefaultTableModel) scoretb.getModel();
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
         model.setRowCount(result.size());
     for (int i = 0; i < result.size(); i++) {
             List<String> scoreString = result.get(i);
             // Display order number
             for (int j = 0; j < scoreString.size(); j++) {
-                scoretb.setValueAt(scoreString.get(j), i, j);
+                scoreTable.setValueAt(scoreString.get(j), i, j);
             }
         }
         
         String name=ScoreManagePanelController.getname(studentId);
-        txtname.setText(name);
+        studentNameTextField.setText(name);
         Float gpa=ScoreManagePanelController.getgpa(studentId);
         String s = Float.toString(gpa);
-        txtgpa.setText(s);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        gpaTextField.setText(s);
+    }//GEN-LAST:event_searchButtonActionPerformed
 
-    private void txtgpaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtgpaActionPerformed
+    private void gpaTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gpaTextFieldActionPerformed
 
 //        String studentId = txt_studentid.getText();
 //        String gpa=ScoreManagePanelController.getgpa(studentId);
 //        txtgpa.setText(gpa);
         
-    }//GEN-LAST:event_txtgpaActionPerformed
+    }//GEN-LAST:event_gpaTextFieldActionPerformed
 
-    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
+    private void studentNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentNameTextFieldActionPerformed
 //        String studentId = txt_studentid.getText();
 //        String name=ScoreManagePanelController.getname(studentId);
 //        txtname.setText(name);
-    }//GEN-LAST:event_txtnameActionPerformed
+    }//GEN-LAST:event_studentNameTextFieldActionPerformed
 
-    private void scoretbMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoretbMouseClicked
-        DefaultTableModel RecordTable= (DefaultTableModel)scoretb.getModel();
-        int SelectedRows=scoretb.getSelectedRow();
-        txtsjid.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
-        txtsjname.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        txtsco.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-    }//GEN-LAST:event_scoretbMouseClicked
+    private void scoreTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scoreTableMouseClicked
+        DefaultTableModel RecordTable= (DefaultTableModel)scoreTable.getModel();
+        int SelectedRows=scoreTable.getSelectedRow();
+        subjectIdTextField.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
+        subjectNameTextField.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        scoreTextField.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+    }//GEN-LAST:event_scoreTableMouseClicked
 
-    private void txtsjnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsjnameActionPerformed
+    private void subjectNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtsjnameActionPerformed
+    }//GEN-LAST:event_subjectNameTextFieldActionPerformed
 
-    private void btupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btupdateActionPerformed
-        String sujectId=txtsjid.getText();
-        String subjectName=txtsjname.getText();
-        String score=txtsco.getText();
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        String sujectId=subjectIdTextField.getText();
+        String subjectName=subjectNameTextField.getText();
+        String score=scoreTextField.getText();
         String mes= ScoreManagePanelController.getStudentEditMessage(sujectId,subjectName,score);
         JOptionPane.showMessageDialog(this, mes);
-        String studentId = txt_studentid.getText();
+        String studentId = studentIdInput.getText();
         
          List<List<String>> result = ScoreManagePanelController.getScoreListString(studentId);
         // Set table row count
-        DefaultTableModel model = (DefaultTableModel) scoretb.getModel();
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
         model.setRowCount(result.size());
     for (int i = 0; i < result.size(); i++) {
             List<String> scoreString = result.get(i);
             // Display order number
             for (int j = 0; j < scoreString.size(); j++) {
-                scoretb.setValueAt(scoreString.get(j), i, j);
+                scoreTable.setValueAt(scoreString.get(j), i, j);
             }
         }
         Float gpa=ScoreManagePanelController.getgpa(studentId);
         String s = Float.toString(gpa);
-        txtgpa.setText(s);
-    }//GEN-LAST:event_btupdateActionPerformed
+        gpaTextField.setText(s);
+    }//GEN-LAST:event_updateButtonActionPerformed
 
-    private void btdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btdeleteActionPerformed
-        String sujectId=txtsjid.getText();
-        String subjectName=txtsjname.getText();
-        String score=txtsco.getText();
-        String studentId = txt_studentid.getText();
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        String sujectId=subjectIdTextField.getText();
+        String subjectName=subjectNameTextField.getText();
+        String score=scoreTextField.getText();
+        String studentId = studentIdInput.getText();
         String mes= ScoreManagePanelController.getStudentDeleteMessage(studentId,sujectId, subjectName, score);
         JOptionPane.showMessageDialog(this, mes);
         
         
          List<List<String>> result = ScoreManagePanelController.getScoreListString(studentId);
         // Set table row count
-        DefaultTableModel model = (DefaultTableModel) scoretb.getModel();
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
         model.setRowCount(result.size());
     for (int i = 0; i < result.size(); i++) {
             List<String> scoreString = result.get(i);
             // Display order number
             for (int j = 0; j < scoreString.size(); j++) {
-                scoretb.setValueAt(scoreString.get(j), i, j);
+                scoreTable.setValueAt(scoreString.get(j), i, j);
             }
         }
         Float gpa=ScoreManagePanelController.getgpa(studentId);
         String s = Float.toString(gpa);
-        txtgpa.setText(s);
-    }//GEN-LAST:event_btdeleteActionPerformed
+        gpaTextField.setText(s);
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void btinsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btinsertActionPerformed
-        String sujectId=txtsjid.getText();
-        String subjectName=txtsjname.getText();
-        String score=txtsco.getText();
-        String studentId = txt_studentid.getText();
+    private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButtonActionPerformed
+        String sujectId=subjectIdTextField.getText();
+        String subjectName=subjectNameTextField.getText();
+        String score=scoreTextField.getText();
+        String studentId = studentIdInput.getText();
         String mes= ScoreManagePanelController.getStudentInsertMessage(studentId,sujectId, subjectName, score);
         JOptionPane.showMessageDialog(this, mes);
         
         
          List<List<String>> result = ScoreManagePanelController.getScoreListString(studentId);
         // Set table row count
-        DefaultTableModel model = (DefaultTableModel) scoretb.getModel();
+        DefaultTableModel model = (DefaultTableModel) scoreTable.getModel();
         model.setRowCount(result.size());
     for (int i = 0; i < result.size(); i++) {
             List<String> scoreString = result.get(i);
             // Display order number
             for (int j = 0; j < scoreString.size(); j++) {
-                scoretb.setValueAt(scoreString.get(j), i, j);
+                scoreTable.setValueAt(scoreString.get(j), i, j);
             }
         }
         Float gpa=ScoreManagePanelController.getgpa(studentId);
         String s = Float.toString(gpa);
-        txtgpa.setText(s);
-    }//GEN-LAST:event_btinsertActionPerformed
+        gpaTextField.setText(s);
+    }//GEN-LAST:event_insertButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btdelete;
-    private javax.swing.JButton btinsert;
-    private javax.swing.JButton btupdate;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable scoretb;
-    private javax.swing.JTextField txt_studentid;
-    private javax.swing.JTextField txtgpa;
-    private javax.swing.JTextField txtname;
-    private javax.swing.JTextField txtsco;
-    private javax.swing.JTextField txtsjid;
-    private javax.swing.JTextField txtsjname;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JLabel footerLabel;
+    private javax.swing.JLabel gpaLabel;
+    private javax.swing.JTextField gpaTextField;
+    private javax.swing.JButton insertButton;
+    private javax.swing.JTable scoreTable;
+    private javax.swing.JScrollPane scoreTableScrollPane;
+    private javax.swing.JTextField scoreTextField;
+    private javax.swing.JButton searchButton;
+    private javax.swing.JTextField studentIdInput;
+    private javax.swing.JLabel studentIdLabel;
+    private javax.swing.JTextField studentNameTextField;
+    private javax.swing.JTextField subjectIdTextField;
+    private javax.swing.JTextField subjectNameTextField;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
