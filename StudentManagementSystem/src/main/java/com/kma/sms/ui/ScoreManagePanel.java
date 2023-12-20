@@ -40,20 +40,19 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         gpaLabel = new javax.swing.JLabel();
         gpaTextField = new javax.swing.JTextField();
         subjectIdTextField = new javax.swing.JTextField();
-        subjectNameTextField = new javax.swing.JTextField();
         scoreTextField = new javax.swing.JTextField();
         updateButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         insertButton = new javax.swing.JButton();
         footerLabel = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        studentNameLabel = new javax.swing.JLabel();
         studentNameTextField = new javax.swing.JTextField();
         scoreTableScrollPane = new javax.swing.JScrollPane();
         scoreTable = new javax.swing.JTable();
+        subjectNameTextField = new javax.swing.JTextField();
 
         setPreferredSize(new java.awt.Dimension(500, 540));
 
-        studentIdLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         studentIdLabel.setText("Mã sv:");
 
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +61,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        searchButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +68,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        gpaLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         gpaLabel.setText("GPA:");
 
         gpaTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -79,14 +76,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        subjectNameTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        subjectNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                subjectNameTextFieldActionPerformed(evt);
-            }
-        });
-
-        updateButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,7 +83,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         deleteButton.setText("Delete");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +90,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        insertButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         insertButton.setText("Insert");
         insertButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +101,7 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         footerLabel.setEnabled(false);
         footerLabel.setFocusable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
-        jLabel1.setText("Tên sv:");
+        studentNameLabel.setText("Tên sv:");
 
         scoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,32 +141,37 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         });
         scoreTableScrollPane.setViewportView(scoreTable);
 
+        subjectNameTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectNameTextFieldActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(560, 560, 560)
-                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(studentIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                            .addComponent(studentNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                             .addComponent(gpaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(studentIdInput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
                             .addComponent(gpaTextField)
                             .addComponent(studentNameTextField))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(subjectIdTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(scoreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                                .addComponent(subjectNameTextField)))
+                        .addGap(18, 104, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(subjectIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(scoreTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(subjectNameTextField))
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(deleteButton)
@@ -205,10 +196,10 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                     .addComponent(studentIdLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(deleteButton)
-                    .addComponent(jLabel1)
-                    .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(studentNameLabel)
+                    .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(gpaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,6 +217,10 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         preferredSize.height = 30;
         footerLabel.setPreferredSize(preferredSize);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void subjectNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectNameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subjectNameTextFieldActionPerformed
 
     private void scoreTableComponentResized(java.awt.event.ComponentEvent evt) {                                            
         // resize column width
@@ -294,10 +289,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
    
     }// GEN-LAST:event_scoreTableMouseClicked
 
-    private void subjectNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_subjectNameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }// GEN-LAST:event_subjectNameTextFieldActionPerformed
-
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateButtonActionPerformed
         String sujectId = subjectIdTextField.getText();
         String subjectName = subjectNameTextField.getText();
@@ -314,8 +305,19 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         String subjectName = subjectNameTextField.getText();
         String score = scoreTextField.getText();
         String studentId = studentIdInput.getText();
-        String mes = ScoreManagePanelController.getStudentDeleteMessage(studentId, sujectId, subjectName, score);
-        JOptionPane.showMessageDialog(this, mes);
+        // Show warning message if subjectId is not empty
+        if (sujectId.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn môn học cần xóa điểm!");
+            return;
+        }
+        String warningMessage = "Bạn có chắc chắn muốn xóa điểm môn " + subjectName + " của sinh viên có mã số "
+                + studentId + " không?";
+        int option = JOptionPane.showConfirmDialog(this, warningMessage, "Xóa điểm", JOptionPane.YES_NO_OPTION);
+        if (option == JOptionPane.NO_OPTION) {
+            return;
+        }
+        String message = ScoreManagePanelController.getStudentDeleteMessage(studentId, sujectId, subjectName, score);
+        JOptionPane.showMessageDialog(this, message);
 
         // update table
         updateTable();
@@ -366,13 +368,13 @@ public class ScoreManagePanel extends javax.swing.JPanel {
     private javax.swing.JLabel gpaLabel;
     private javax.swing.JTextField gpaTextField;
     private javax.swing.JButton insertButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JTable scoreTable;
     private javax.swing.JScrollPane scoreTableScrollPane;
     private javax.swing.JTextField scoreTextField;
     private javax.swing.JButton searchButton;
     private javax.swing.JTextField studentIdInput;
     private javax.swing.JLabel studentIdLabel;
+    private javax.swing.JLabel studentNameLabel;
     private javax.swing.JTextField studentNameTextField;
     private javax.swing.JTextField subjectIdTextField;
     private javax.swing.JTextField subjectNameTextField;

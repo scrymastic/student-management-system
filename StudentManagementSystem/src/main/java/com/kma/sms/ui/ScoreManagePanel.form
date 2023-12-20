@@ -23,7 +23,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="560" max="-2" attributes="0"/>
-              <Component id="footerLabel" pref="0" max="32767" attributes="0"/>
+              <Component id="footerLabel" pref="87" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -31,7 +31,7 @@
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="studentIdLabel" max="32767" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" pref="65" max="32767" attributes="0"/>
+                          <Component id="studentNameLabel" alignment="0" pref="65" max="32767" attributes="0"/>
                           <Component id="gpaLabel" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -40,13 +40,11 @@
                           <Component id="gpaTextField" max="32767" attributes="0"/>
                           <Component id="studentNameTextField" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="subjectIdTextField" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="scoreTextField" pref="140" max="32767" attributes="0"/>
-                              <Component id="subjectNameTextField" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace type="separate" pref="104" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="subjectIdTextField" alignment="0" pref="140" max="32767" attributes="0"/>
+                          <Component id="scoreTextField" pref="140" max="32767" attributes="0"/>
+                          <Component id="subjectNameTextField" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -79,10 +77,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="subjectNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="deleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="subjectNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -103,9 +101,6 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="studentIdLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="M&#xe3; sv:"/>
       </Properties>
     </Component>
@@ -116,9 +111,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="searchButton">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
       <Events>
@@ -127,9 +119,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="gpaLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="GPA:"/>
       </Properties>
     </Component>
@@ -140,21 +129,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="subjectIdTextField">
     </Component>
-    <Component class="javax.swing.JTextField" name="subjectNameTextField">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="11"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subjectNameTextFieldActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JTextField" name="scoreTextField">
     </Component>
     <Component class="javax.swing.JButton" name="updateButton">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
@@ -163,9 +141,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="deleteButton">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
@@ -174,9 +149,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="insertButton">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Insert"/>
       </Properties>
       <Events>
@@ -193,11 +165,8 @@
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="Dimension preferredSize = footerLabel.getPreferredSize();&#xa;preferredSize.height = 30;&#xa;footerLabel.setPreferredSize(preferredSize);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="studentNameLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="T&#xea;n sv:"/>
       </Properties>
     </Component>
@@ -255,5 +224,10 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JTextField" name="subjectNameTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subjectNameTextFieldActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

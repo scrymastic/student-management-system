@@ -4,6 +4,10 @@
  */
 package com.kma.sms.ui;
 
+import java.util.List;
+
+import com.kma.sms.controller.MajorManagePanelController;
+
 /**
  *
  * @author lxsgo
@@ -15,6 +19,7 @@ public class MajorManagePanel extends javax.swing.JPanel {
      */
     public MajorManagePanel() {
         initComponents();
+        updateTable();
     }
 
     /**
@@ -26,21 +31,265 @@ public class MajorManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        footerLabel = new javax.swing.JTextField();
+        numOfStudentsField = new javax.swing.JTextField();
+        numOfStudentsLabel = new javax.swing.JLabel();
+        numOfMalesField = new javax.swing.JTextField();
+        numOfFemalesField = new javax.swing.JTextField();
+        numOfMalesLabel = new javax.swing.JLabel();
+        numOfFemalesLabel = new javax.swing.JLabel();
+        avgScoreField = new javax.swing.JTextField();
+        excellentField = new javax.swing.JTextField();
+        avgScoreLabel = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        majorTable = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        goodField = new javax.swing.JTextField();
+        intermediateField = new javax.swing.JTextField();
+
         setPreferredSize(new java.awt.Dimension(500, 540));
+
+        footerLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                footerLabelActionPerformed(evt);
+            }
+        });
+
+        numOfStudentsField.setEditable(false);
+
+        numOfStudentsLabel.setText("Tổng số:");
+
+        numOfMalesField.setEditable(false);
+        numOfMalesField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                numOfMalesFieldActionPerformed(evt);
+            }
+        });
+
+        numOfFemalesField.setEditable(false);
+
+        numOfMalesLabel.setText("Nam:");
+
+        numOfFemalesLabel.setText("Nữ:");
+
+        avgScoreField.setEditable(false);
+
+        excellentField.setEditable(false);
+        excellentField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excellentFieldActionPerformed(evt);
+            }
+        });
+
+        avgScoreLabel.setText("Điểm tb:");
+
+        jLabel5.setText("Xuất sắc:");
+
+        majorTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "STT", "Mã ngành", "Tên ngành", "Địa chỉ", "SĐT", "Trưởng khoa"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        majorTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                majorTableMouseClicked(evt);
+            }
+        });
+        majorTable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                majorTableComponentResized(evt);
+            }
+        });
+        jScrollPane1.setViewportView(majorTable);
+
+        jLabel1.setText("Giỏi:");
+
+        jLabel2.setText("Khá:");
+
+        goodField.setEditable(false);
+        goodField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goodFieldActionPerformed(evt);
+            }
+        });
+
+        intermediateField.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(footerLabel)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(numOfMalesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(numOfStudentsLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+                    .addComponent(numOfFemalesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(numOfMalesField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(numOfStudentsField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numOfFemalesField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(avgScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(avgScoreField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(excellentField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(goodField)
+                    .addComponent(intermediateField))
+                .addGap(36, 36, 36))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numOfStudentsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numOfStudentsLabel)
+                    .addComponent(avgScoreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avgScoreLabel)
+                    .addComponent(excellentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numOfMalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numOfMalesLabel)
+                    .addComponent(jLabel1)
+                    .addComponent(goodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numOfFemalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numOfFemalesLabel)
+                    .addComponent(jLabel2)
+                    .addComponent(intermediateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void footerLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_footerLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_footerLabelActionPerformed
+
+    private void numOfMalesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numOfMalesFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_numOfMalesFieldActionPerformed
+
+    private void goodFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goodFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goodFieldActionPerformed
+
+    private void majorTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_majorTableMouseClicked
+        // update number of students in text field
+        int selectedRow = majorTable.getSelectedRow();
+        String majorId = (String) majorTable.getValueAt(selectedRow, 1);
+
+        int numberOfStudents = MajorManagePanelController.getNumberOfStudentsByMajorId(majorId);
+        int numberOfMales = MajorManagePanelController.getNumberOfMalesByMajorId(majorId);
+        int numberOfFemales = MajorManagePanelController.getNumberOfFemalesByMajorId(majorId);
+
+        numOfStudentsField.setText(Integer.toString(numberOfStudents));
+        numOfMalesField.setText(Integer.toString(numberOfMales));
+        numOfFemalesField.setText(Integer.toString(numberOfFemales));
+
+        // update average score in text field
+        double averageScore = MajorManagePanelController.getAverageScoreByMajorId(majorId);
+        // get first 2 digits after decimal point
+        averageScore = Math.round(averageScore * 100.0) / 100.0;
+        avgScoreField.setText(Double.toString(averageScore));
+
+        // update number of excellent students in text field
+        int numberOfExcellentStudents = MajorManagePanelController.getNumberOfExcellentStudentsByMajorId(majorId);
+        excellentField.setText(Integer.toString(numberOfExcellentStudents));
+
+        // update number of good students in text field
+        int numberOfGoodStudents = MajorManagePanelController.getNumberOfGoodStudentsByMajorId(majorId);
+        goodField.setText(Integer.toString(numberOfGoodStudents));
+
+        // update number of intermediate students in text field
+        int numberOfIntermediateStudents = MajorManagePanelController.getNumberOfAverageStudentsByMajorId(majorId);
+        intermediateField.setText(Integer.toString(numberOfIntermediateStudents));
+        
+
+
+    }//GEN-LAST:event_majorTableMouseClicked
+
+    private void majorTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_majorTableComponentResized
+        // resize column width
+        int tW = majorTable.getWidth();
+        javax.swing.table.TableColumn column;
+        // percent of width
+        int[] colPerc = {5, 10, 30, 20, 20, 15};
+        for (int i = 0; i < majorTable.getColumnCount(); i++) {
+            column = majorTable.getColumnModel().getColumn(i);
+            int pWidth = Math.round(colPerc[i] * tW);
+            column.setPreferredWidth(pWidth);
+        }
+
+    }//GEN-LAST:event_majorTableComponentResized
+
+    private void excellentFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excellentFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_excellentFieldActionPerformed
+
+    public void updateTable() {
+        // update table
+        List<List<String>> majorListString = MajorManagePanelController.getMajorListString();
+
+        javax.swing.table.DefaultTableModel tableModel = (javax.swing.table.DefaultTableModel) majorTable.getModel();
+        tableModel.setRowCount(0);
+
+        for (int i = 0; i < majorListString.size(); i++) {
+            List<String> majorString = majorListString.get(i);
+            majorString.add(0, Integer.toString(i + 1));
+            tableModel.addRow(majorString.toArray());
+
+        }
+
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField avgScoreField;
+    private javax.swing.JLabel avgScoreLabel;
+    private javax.swing.JTextField excellentField;
+    private javax.swing.JTextField footerLabel;
+    private javax.swing.JTextField goodField;
+    private javax.swing.JTextField intermediateField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable majorTable;
+    private javax.swing.JTextField numOfFemalesField;
+    private javax.swing.JLabel numOfFemalesLabel;
+    private javax.swing.JTextField numOfMalesField;
+    private javax.swing.JLabel numOfMalesLabel;
+    private javax.swing.JTextField numOfStudentsField;
+    private javax.swing.JLabel numOfStudentsLabel;
     // End of variables declaration//GEN-END:variables
 }

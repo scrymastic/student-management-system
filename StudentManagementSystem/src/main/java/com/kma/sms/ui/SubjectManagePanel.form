@@ -50,42 +50,36 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="majorIdLabel" alignment="0" pref="65" max="32767" attributes="0"/>
-                                  <Component id="subjectNameLabel" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="subjectIdLabel" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="subjectNameInput" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="majorIdInput" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  <Component id="subjectIdInput" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="creditsLabel" min="-2" pref="65" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="creditsInput" min="-2" pref="140" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="addSubjectButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="searchSubjectButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="footerLabel" max="32767" attributes="0"/>
+                      <Component id="searchSubjectButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                   </Group>
+                  <Component id="footerLabel" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="majorIdLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="subjectNameLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="subjectIdLabel" alignment="1" min="-2" pref="64" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="subjectIdInput" max="32767" attributes="0"/>
+                  <Component id="subjectNameInput" alignment="0" max="32767" attributes="0"/>
+                  <Component id="majorIdInput" alignment="0" pref="140" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="creditsLabel" min="-2" pref="65" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="creditsInput" min="-2" pref="140" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="addSubjectButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -242,33 +236,21 @@
     </Component>
     <Component class="javax.swing.JLabel" name="subjectIdLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="M&#xe3; hp:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="majorIdLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="M&#xe3; ng&#xe0;nh:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="subjectNameLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="T&#xea;n hp:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="creditsLabel">
       <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="12" style="0"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="S&#x1ed1; t&#xed;n:"/>
       </Properties>
     </Component>

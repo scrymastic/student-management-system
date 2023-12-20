@@ -28,7 +28,7 @@ public class MainForm extends javax.swing.JFrame {
         CardLayout cardLayout = new CardLayout();
         contentPanel.setLayout(cardLayout);
         // contentPanel.add(new HomePagePanel(), "homePagePanel");
-        // contentPanel.add(new DepartmentDirPanel(), "departmentDirPanel");
+        contentPanel.add(new MajorManagePanel(), "majorManagePanel");
         contentPanel.add(new ClassManagePanel(), "classManagePanel");
         contentPanel.add(new SubjectManagePanel(), "subjectManagePanel");
         contentPanel.add(new StudentManagePanel(), "studentManagePanel");
@@ -193,7 +193,10 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void departmentDirNaviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departmentDirNaviButtonActionPerformed
-        // TODO add your handling code here:
+        // Show major manage panel and hide other panels
+        CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+        cardLayout.show(contentPanel, "majorManagePanel");
+        
     }//GEN-LAST:event_departmentDirNaviButtonActionPerformed
 
     private void classDirNaviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classDirNaviButtonActionPerformed
