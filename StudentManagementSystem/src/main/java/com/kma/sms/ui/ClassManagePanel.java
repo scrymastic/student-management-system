@@ -85,6 +85,11 @@ public class ClassManagePanel extends javax.swing.JPanel {
                 classTableMouseReleased(evt);
             }
         });
+        classTable.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                classTableComponentResized(evt);
+            }
+        });
         classScrollPane.setViewportView(classTable);
 
         footerLabel.setText("                        ");
@@ -177,7 +182,7 @@ public class ClassManagePanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(searchButton)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -197,8 +202,8 @@ public class ClassManagePanel extends javax.swing.JPanel {
                     .addComponent(teacherLabel)
                     .addComponent(teacherUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(classScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(classScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(footerLabel))
         );
 
@@ -317,7 +322,20 @@ public class ClassManagePanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_insertButtonActionPerformed
 
-    public void updateTable() {
+    private void classTableComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_classTableComponentResized
+        // resize column width
+        int width = classTable.getWidth();
+        javax.swing.table.TableColumn column = null;
+        // percent of width
+        int colWidthPercent[] = {5, 20, 20, 20, 35};
+        for (int i = 0; i < 5; i++) {
+            column = classTable.getColumnModel().getColumn(i);
+            column.setPreferredWidth(width * colWidthPercent[i] / 100);
+        }
+
+    }//GEN-LAST:event_classTableComponentResized
+
+    private void updateTable() {
         // Get input
         String classId = classIdInput.getText();
         String majorId = majorInput.getText();
