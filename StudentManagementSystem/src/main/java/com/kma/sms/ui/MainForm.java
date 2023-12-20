@@ -27,7 +27,7 @@ public class MainForm extends javax.swing.JFrame {
     private void initCardLayout() {
         CardLayout cardLayout = new CardLayout();
         contentPanel.setLayout(cardLayout);
-        // contentPanel.add(new HomePagePanel(), "homePagePanel");
+        contentPanel.add(new HomePagePanel(), "homePagePanel");
         // contentPanel.add(new DepartmentDirPanel(), "departmentDirPanel");
         contentPanel.add(new ClassManagePanel(), "classManagePanel");
         contentPanel.add(new SubjectManagePanel(), "subjectManagePanel");
@@ -58,6 +58,7 @@ public class MainForm extends javax.swing.JFrame {
     private void initComponents() {
 
         headerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         naviPanel = new javax.swing.JPanel();
         homePageNaviButton = new javax.swing.JButton();
         departmentDirNaviButton = new javax.swing.JButton();
@@ -69,19 +70,34 @@ public class MainForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        headerPanel.setBackground(new java.awt.Color(51, 245, 234));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 102));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Student Management System");
+
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 125, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
         );
 
         homePageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         homePageNaviButton.setText("Trang chủ");
+        homePageNaviButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homePageNaviButtonActionPerformed(evt);
+            }
+        });
 
         departmentDirNaviButton.setBackground(new java.awt.Color(51, 153, 255));
         departmentDirNaviButton.setText("Danh mục khoa");
@@ -166,7 +182,7 @@ public class MainForm extends javax.swing.JFrame {
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 283, Short.MAX_VALUE)
+            .addGap(0, 289, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -186,7 +202,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(naviPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)))
+                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)))
         );
 
         pack();
@@ -229,6 +245,12 @@ public class MainForm extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_contentPanelComponentResized
+
+    private void homePageNaviButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homePageNaviButtonActionPerformed
+        // show homepage
+        CardLayout cardLayout = (CardLayout) contentPanel.getLayout();
+        cardLayout.show(contentPanel, "homePagePanel");
+    }//GEN-LAST:event_homePageNaviButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +299,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton departmentDirNaviButton;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton homePageNaviButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel naviPanel;
     private javax.swing.JButton scoreMangeNaviButton;
     private javax.swing.JButton studentManageNaviButton;
