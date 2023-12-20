@@ -29,7 +29,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[560, 500]"/>
+      <Dimension value="[500, 540]"/>
     </Property>
   </Properties>
   <AuxValues>
@@ -47,43 +47,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tableScrollPane" alignment="0" max="32767" attributes="0"/>
+          <Component id="footerLabel" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="addStudentButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="377" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
-          <Component id="footerLabel" alignment="0" max="32767" attributes="0"/>
+          <Component id="tableScrollPane" alignment="0" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="classIdLabel" max="32767" attributes="0"/>
-                  <Component id="studentIdlabel" alignment="1" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="studentNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="studentIdlabel" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="classIdLabel" min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="studentNameLabel" min="-2" pref="63" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="classIdInput" max="32767" attributes="0"/>
-                          <Component id="studentIdInput" min="-2" pref="150" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="genderLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="addressInput" pref="150" max="32767" attributes="0"/>
-                          <Component id="genderInput" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="studentNameInput" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="studentIdInput" pref="140" max="32767" attributes="0"/>
+                  <Component id="classIdInput" max="32767" attributes="0"/>
+                  <Component id="studentNameInput" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="genderLabel" pref="65" max="32767" attributes="0"/>
+                  <Component id="addressLabel" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="genderInput" pref="140" max="32767" attributes="0"/>
+                  <Component id="addressInput" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="addStudentButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,31 +87,35 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="searchStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="18" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="studentIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="studentIdlabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="genderInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="classIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="classIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addressInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="studentNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="searchStudentButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="studentIdInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="studentIdlabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="classIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="classIdInput" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="studentNameInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="studentNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="genderInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="genderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="tableScrollPane" min="-2" pref="323" max="-2" attributes="0"/>
+              <Component id="tableScrollPane" pref="375" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="footerLabel" min="-2" max="-2" attributes="0"/>
           </Group>
