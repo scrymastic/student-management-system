@@ -5,7 +5,8 @@
 package com.kma.sms;
 import javax.swing.UIManager;
 
-
+import com.formdev.flatlaf.FlatDarculaLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.kma.sms.ui.LoginForm;
 
@@ -18,7 +19,7 @@ public class StudentManagementSystem {
 
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel(new FlatMacDarkLaf());
+            UIManager.setLookAndFeel(new FlatLightLaf());
         } catch (Exception ex) {
             ex.printStackTrace(); // Print stack trace for debugging
         }

@@ -80,10 +80,10 @@ public class ScoreManagePanelController {
 
     private static int sendScoreEditRequestAndReceiveResponse(String subjectId, String subjectName, String score) {
         // Construct a student object
-        Score sco = new Score(subjectId, subjectName, score);
+        Score scoreObj = new Score(subjectId, subjectName, score);
         // Send the request
         // Receive the response
-        int response = ScoreDAO.updateScoreDB(sco);
+        int response = ScoreDAO.updateScoreDB(scoreObj);
 
         return response;
     }
@@ -138,11 +138,9 @@ public class ScoreManagePanelController {
 
     public static String getStudentDeleteMessage(String studentid, String subjectId, String subjectName, String score) {
 
-        if (score.isEmpty() || subjectId.isEmpty() || subjectName.isEmpty())
-            return "Còn ô để trống";
-        float checkscore = Float.parseFloat(score);
-        if (checkscore < 0 || checkscore > 10)
-            return "Điểm nhập vào không đúng";
+        if (subjectId.isEmpty() || subjectName.isEmpty())
+            return "Mã sinh viên và môn học không được để trống";
+
         int checksjid = ScoreDAO.checkSubjectId(subjectId);
         if (checksjid == 0)
             return "Không tồn tại mã môn học này";
@@ -155,7 +153,7 @@ public class ScoreManagePanelController {
         int checksjidname = ScoreDAO.checkSubjectIdName(subjectId, subjectName);
         if (checksjidname != 0)
             return "Mã môn học và môn học không tương ứng";
-        int errorCode = sendScoreDeleteRequestAndReceiveResponse(studentid, subjectId, subjectName, score);
+        int errorCode = sendScoreDeleteRequestAndReceiveResponse(studentid, subjectId);
 
         // Generate message
         String message = "";
@@ -173,13 +171,12 @@ public class ScoreManagePanelController {
 
     }
 
-    private static int sendScoreDeleteRequestAndReceiveResponse(String studentid, String subjectId, String subjectName,
-            String score) {
+    private static int sendScoreDeleteRequestAndReceiveResponse(String studentid, String subjectId) {
         // Construct a student object
-        Score sco = new Score(studentid, subjectId, subjectName, score);
+        Score scoreObj = new Score(studentid, subjectId, null, null);
         // Send the request
         // Receive the response
-        int response = ScoreDAO.deleteScore(sco);
+        int response = ScoreDAO.deleteScore(scoreObj);
 
         return response;
     }

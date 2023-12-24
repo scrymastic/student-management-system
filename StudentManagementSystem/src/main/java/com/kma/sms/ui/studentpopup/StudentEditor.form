@@ -24,62 +24,54 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="studentIdLabel" alignment="0" max="32767" attributes="0"/>
+                          <Component id="classIdLabel" alignment="0" pref="65" max="32767" attributes="0"/>
+                          <Component id="studentNameLabel" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="studentIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="classIdLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="studentNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="63" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="classIdEditor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="studentIdEditor" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="studentNameEditor" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="dateOfBirthLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="genderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="addressLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="telephoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="addressEditor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="telephoneEditor" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dateOfBirthEditor" alignment="0" pref="200" max="32767" attributes="0"/>
-                                  <Component id="genderEditor" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="classIdEditor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="studentIdEditor" alignment="1" max="32767" attributes="0"/>
+                          <Component id="studentNameEditor" alignment="1" min="-2" pref="200" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                      <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="telephoneLabel" min="-2" pref="65" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="addressLabel" max="32767" attributes="0"/>
+                              <Component id="genderLabel" alignment="0" max="32767" attributes="0"/>
+                              <Component id="dateOfBirthLabel" alignment="0" pref="65" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="addressEditor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="telephoneEditor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="dateOfBirthEditor" alignment="0" pref="200" max="32767" attributes="0"/>
+                          <Component id="genderEditor" alignment="0" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="56" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+              <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="saveButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="studentIdEditor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="studentIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -119,7 +111,7 @@
                   <Component id="cancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="saveButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

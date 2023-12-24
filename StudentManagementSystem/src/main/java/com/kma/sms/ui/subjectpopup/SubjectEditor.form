@@ -24,13 +24,20 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="subjectNameLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="creditsLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="majorIdLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="subjectIdLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                  <Component id="subjectIdOldLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="subjectNameLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="creditsLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="majorIdLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="subjectIdLabel" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="subjectIdOldLabel" min="-2" pref="125" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -42,7 +49,7 @@
                   </Group>
                   <Component id="subjectIdOld" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="55" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
@@ -56,37 +63,37 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="subjectIdOld" min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="subjectIdOldLabel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="subjectIdEditor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="subjectIdLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="majorIdEditor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="majorIdLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="subjectNameEditor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="subjectNameLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="creditsEditor" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="creditsLabel" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="CancelButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="SaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

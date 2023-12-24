@@ -6,8 +6,18 @@ package com.kma.sms.ui;
 
 import com.kma.sms.controller.ScoreManagePanelController;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
+import java.awt.RenderingHints;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -16,6 +26,37 @@ import javax.swing.table.DefaultTableModel;
  * @author lxsgo
  */
 public class ScoreManagePanel extends javax.swing.JPanel {
+
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        super.paintComponent(grphcs);
+        Graphics2D g2d = (Graphics2D) grphcs;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Load the properties file
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
+            prop.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // Extract and parse the color values
+        Color[] colors = new Color[3];
+        String[] colorStrings = prop.getProperty("colors_set_3").split(", "); // Change this to use different color sets
+        for (int i = 0; i < colorStrings.length; i++) {
+            colors[i] = Color.decode(colorStrings[i]);
+        }
+
+        int diameter = Math.max(getWidth(), getHeight());
+        float radius = diameter * 1.0f; // Increase the radius
+        float[] dist = { 0.0f, 0.5f, 1.0f };
+        RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
+
+        g2d.setPaint(rgp);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+    }
+
 
     /**
      * Creates new form ScoreManagePanel
@@ -53,6 +94,7 @@ public class ScoreManagePanel extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(500, 540));
 
+        studentIdLabel.setForeground(new java.awt.Color(255, 255, 255));
         studentIdLabel.setText("Mã sv:");
 
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
@@ -68,8 +110,10 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
+        gpaLabel.setForeground(new java.awt.Color(255, 255, 255));
         gpaLabel.setText("GPA:");
 
+        gpaTextField.setEditable(false);
         gpaTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 gpaTextFieldActionPerformed(evt);
@@ -101,7 +145,10 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         footerLabel.setEnabled(false);
         footerLabel.setFocusable(false);
 
+        studentNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         studentNameLabel.setText("Tên sv:");
+
+        studentNameTextField.setEditable(false);
 
         scoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,7 +228,10 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(searchButton)))
                 .addGap(36, 36, 36))
-            .addComponent(scoreTableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(scoreTableScrollPane)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +258,7 @@ public class ScoreManagePanel extends javax.swing.JPanel {
                     .addComponent(gpaLabel))
                 .addGap(18, 18, 18)
                 .addComponent(scoreTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 28, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(footerLabel)
                 .addGap(0, 0, 0))
         );
@@ -310,17 +360,17 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn môn học cần xóa điểm!");
             return;
         }
-        String warningMessage = "Bạn có chắc chắn muốn xóa điểm môn " + subjectName + " của sinh viên có mã số "
-                + studentId + " không?";
+        String warningMessage = "<html><div style='text-align: center;'>"
+                + "Bạn có chắc chắn muốn xóa điểm môn " + subjectName + "<br>" 
+                + "của sinh viên có mã số " + studentId + " không?" + "</div></html>";
         int option = JOptionPane.showConfirmDialog(this, warningMessage, "Xóa điểm", JOptionPane.YES_NO_OPTION);
-        if (option == JOptionPane.NO_OPTION) {
-            return;
+        if (option == JOptionPane.YES_OPTION) {
+            String message = ScoreManagePanelController.getStudentDeleteMessage(studentId, sujectId, subjectName, score);
+            JOptionPane.showMessageDialog(this, message);
+            // update table
+            updateTable();
         }
-        String message = ScoreManagePanelController.getStudentDeleteMessage(studentId, sujectId, subjectName, score);
-        JOptionPane.showMessageDialog(this, message);
 
-        // update table
-        updateTable();
     }// GEN-LAST:event_deleteButtonActionPerformed
 
     private void insertButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_insertButtonActionPerformed

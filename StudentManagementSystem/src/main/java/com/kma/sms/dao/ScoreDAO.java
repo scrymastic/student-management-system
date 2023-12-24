@@ -219,11 +219,11 @@ public class ScoreDAO {
         }
     }
 
-    public static int deleteScore(Score scr) {
+    public static int deleteScore(Score score) {
         try (Connection connection = DatabaseConnection.connect()) {
             Statement statement = connection.createStatement();
-            String query = "delete from scores where student_id = '" + scr.getStudenId() + "'and subject_id = '"
-                    + scr.getSubjectId() + "'";
+            String query = "delete from scores where student_id = '" + score.getStudenId() + "'and subject_id = '"
+                    + score.getSubjectId() + "'";
             int result = statement.executeUpdate(query);
 
             return result;
@@ -235,13 +235,13 @@ public class ScoreDAO {
         }
     }
 
-    public static int insertScore(Score scr) {
+    public static int insertScore(Score score) {
         try (Connection connection = DatabaseConnection.connect()) {
             Statement statement = connection.createStatement();
             String query = "Insert into scores(student_id,subject_id,score) value (";
-            query += "'" + scr.getStudenId() + "',";
-            query += "'" + scr.getSubjectId() + "',";
-            query += "'" + scr.getScore() + "')";
+            query += "'" + score.getStudenId() + "',";
+            query += "'" + score.getSubjectId() + "',";
+            query += "'" + score.getScore() + "')";
             int result = statement.executeUpdate(query);
 
             return result;

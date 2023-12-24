@@ -4,7 +4,16 @@
  */
 package com.kma.sms.ui;
 
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
+import java.awt.RenderingHints;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
 import com.kma.sms.controller.MajorManagePanelController;
 
@@ -13,6 +22,35 @@ import com.kma.sms.controller.MajorManagePanelController;
  * @author lxsgo
  */
 public class MajorManagePanel extends javax.swing.JPanel {
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        super.paintComponent(grphcs);
+        Graphics2D g2d = (Graphics2D) grphcs;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Load the properties file
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
+            prop.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // Extract and parse the color values
+        Color[] colors = new Color[3];
+        String[] colorStrings = prop.getProperty("colors_set_4").split(", "); // Change this to use different color sets
+        for (int i = 0; i < colorStrings.length; i++) {
+            colors[i] = Color.decode(colorStrings[i]);
+        }
+
+        int diameter = Math.max(getWidth(), getHeight());
+        float radius = diameter * 1.0f; // Increase the radius
+        float[] dist = { 0.0f, 0.5f, 1.0f };
+        RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
+
+        g2d.setPaint(rgp);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+    }
 
     /**
      * Creates new form MajorManagePanel
@@ -31,7 +69,6 @@ public class MajorManagePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        footerLabel = new javax.swing.JTextField();
         numOfStudentsField = new javax.swing.JTextField();
         numOfStudentsLabel = new javax.swing.JLabel();
         numOfMalesField = new javax.swing.JTextField();
@@ -41,24 +78,21 @@ public class MajorManagePanel extends javax.swing.JPanel {
         avgScoreField = new javax.swing.JTextField();
         excellentField = new javax.swing.JTextField();
         avgScoreLabel = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        excellentLabel = new javax.swing.JLabel();
+        majorTableScrollPane = new javax.swing.JScrollPane();
         majorTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        goodLabel = new javax.swing.JLabel();
+        intermediateLabel = new javax.swing.JLabel();
         goodField = new javax.swing.JTextField();
         intermediateField = new javax.swing.JTextField();
+        footerLabel = new javax.swing.JLabel();
+        alignmentButton = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(500, 540));
 
-        footerLabel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                footerLabelActionPerformed(evt);
-            }
-        });
-
         numOfStudentsField.setEditable(false);
 
+        numOfStudentsLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfStudentsLabel.setText("Tổng số:");
 
         numOfMalesField.setEditable(false);
@@ -70,8 +104,10 @@ public class MajorManagePanel extends javax.swing.JPanel {
 
         numOfFemalesField.setEditable(false);
 
+        numOfMalesLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfMalesLabel.setText("Nam:");
 
+        numOfFemalesLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfFemalesLabel.setText("Nữ:");
 
         avgScoreField.setEditable(false);
@@ -83,9 +119,11 @@ public class MajorManagePanel extends javax.swing.JPanel {
             }
         });
 
+        avgScoreLabel.setForeground(new java.awt.Color(255, 255, 255));
         avgScoreLabel.setText("Điểm tb:");
 
-        jLabel5.setText("Xuất sắc:");
+        excellentLabel.setForeground(new java.awt.Color(255, 255, 255));
+        excellentLabel.setText("Xuất sắc:");
 
         majorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,11 +151,13 @@ public class MajorManagePanel extends javax.swing.JPanel {
                 majorTableComponentResized(evt);
             }
         });
-        jScrollPane1.setViewportView(majorTable);
+        majorTableScrollPane.setViewportView(majorTable);
 
-        jLabel1.setText("Giỏi:");
+        goodLabel.setForeground(new java.awt.Color(255, 255, 255));
+        goodLabel.setText("Giỏi:");
 
-        jLabel2.setText("Khá:");
+        intermediateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        intermediateLabel.setText("Khá:");
 
         goodField.setEditable(false);
         goodField.addActionListener(new java.awt.event.ActionListener() {
@@ -128,72 +168,91 @@ public class MajorManagePanel extends javax.swing.JPanel {
 
         intermediateField.setEditable(false);
 
+        footerLabel.setText("     ");
+
+        alignmentButton.setText(" ");
+        alignmentButton.setBorderPainted(false);
+        alignmentButton.setContentAreaFilled(false);
+        alignmentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alignmentButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(footerLabel)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(numOfMalesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(numOfStudentsLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
-                    .addComponent(numOfFemalesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(numOfMalesField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                    .addComponent(numOfStudentsField, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(numOfFemalesLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(numOfStudentsField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                    .addComponent(numOfMalesField)
                     .addComponent(numOfFemalesField))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(avgScoreLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(avgScoreField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(intermediateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excellentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(goodLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(excellentField, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
                     .addComponent(goodField)
                     .addComponent(intermediateField))
                 .addGap(36, 36, 36))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(majorTableScrollPane)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(alignmentButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addContainerGap()
+                .addComponent(alignmentButton)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numOfStudentsField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numOfStudentsLabel)
                     .addComponent(avgScoreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(avgScoreLabel)
                     .addComponent(excellentField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(excellentLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numOfMalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numOfMalesLabel)
-                    .addComponent(jLabel1)
+                    .addComponent(goodLabel)
                     .addComponent(goodField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numOfFemalesField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numOfFemalesLabel)
-                    .addComponent(jLabel2)
+                    .addComponent(intermediateLabel)
                     .addComponent(intermediateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(footerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(majorTableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(footerLabel))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void footerLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_footerLabelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_footerLabelActionPerformed
 
     private void numOfMalesFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numOfMalesFieldActionPerformed
         // TODO add your handling code here:
@@ -256,6 +315,10 @@ public class MajorManagePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_excellentFieldActionPerformed
 
+    private void alignmentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alignmentButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alignmentButtonActionPerformed
+
     public void updateTable() {
         // update table
         List<List<String>> majorListString = MajorManagePanelController.getMajorListString();
@@ -274,17 +337,18 @@ public class MajorManagePanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alignmentButton;
     private javax.swing.JTextField avgScoreField;
     private javax.swing.JLabel avgScoreLabel;
     private javax.swing.JTextField excellentField;
-    private javax.swing.JTextField footerLabel;
+    private javax.swing.JLabel excellentLabel;
+    private javax.swing.JLabel footerLabel;
     private javax.swing.JTextField goodField;
+    private javax.swing.JLabel goodLabel;
     private javax.swing.JTextField intermediateField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel intermediateLabel;
     private javax.swing.JTable majorTable;
+    private javax.swing.JScrollPane majorTableScrollPane;
     private javax.swing.JTextField numOfFemalesField;
     private javax.swing.JLabel numOfFemalesLabel;
     private javax.swing.JTextField numOfMalesField;

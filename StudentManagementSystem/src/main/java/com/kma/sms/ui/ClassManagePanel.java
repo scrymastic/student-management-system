@@ -4,13 +4,21 @@
  */
 package com.kma.sms.ui;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RadialGradientPaint;
+import java.awt.RenderingHints;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
+import java.util.Properties;
 
-import javax.swing.DefaultBoundedRangeModel;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-import java.awt.Dimension;
+
 import com.kma.sms.controller.ClassManageController;
 
 
@@ -19,6 +27,36 @@ import com.kma.sms.controller.ClassManageController;
  * @author lxsgo
  */
 public class ClassManagePanel extends javax.swing.JPanel {
+
+    @Override
+    protected void paintComponent(Graphics grphcs) {
+        super.paintComponent(grphcs);
+        Graphics2D g2d = (Graphics2D) grphcs;
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+        // Load the properties file
+        Properties prop = new Properties();
+        try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
+            prop.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // Extract and parse the color values
+        Color[] colors = new Color[3];
+        String[] colorStrings = prop.getProperty("colors_set_1").split(", "); // Change this to use different color sets
+        for (int i = 0; i < colorStrings.length; i++) {
+            colors[i] = Color.decode(colorStrings[i]);
+        }
+
+        int diameter = Math.max(getWidth(), getHeight());
+        float radius = diameter * 1.0f; // Increase the radius
+        float[] dist = { 0.0f, 0.5f, 1.0f };
+        RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
+
+        g2d.setPaint(rgp);
+        g2d.fillRect(0, 0, getWidth(), getHeight());
+    }
 
     /**
      * Creates new form ClassManagePanel
@@ -115,10 +153,13 @@ public class ClassManagePanel extends javax.swing.JPanel {
             }
         });
 
+        classIdLabel.setForeground(new java.awt.Color(255, 255, 255));
         classIdLabel.setText("Lớp:");
 
+        majorIdLabel.setForeground(new java.awt.Color(255, 255, 255));
         majorIdLabel.setText("Khoa:");
 
+        teacherLabel.setForeground(new java.awt.Color(255, 255, 255));
         teacherLabel.setText("GVCN:");
 
         majorUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +192,6 @@ public class ClassManagePanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 549, Short.MAX_VALUE)
             .addComponent(footerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -178,6 +218,10 @@ public class ClassManagePanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(searchButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(classScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
