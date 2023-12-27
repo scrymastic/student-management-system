@@ -5,6 +5,7 @@
 package com.kma.sms.controller.studentpopup;
 
 import com.kma.sms.model.Student;
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.StudentDAO;
 
 /**
@@ -16,6 +17,10 @@ public class StudentEditorController {
     // Generate message for response code
     public static String getStudentEditMessage(String studentId, String classId, String studentName,
                                                 String dateOfBirth, String gender, String address, String telephone) {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền sửa thông tin sinh viên";
+        }
         // Validate input
         // Check if studentName is empty
         if (studentName.isEmpty()) return "Tên sinh viên không được để trống";

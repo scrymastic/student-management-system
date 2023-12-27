@@ -6,8 +6,18 @@
 package com.kma.sms.ui;
 
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RadialGradientPaint;
+import java.awt.RenderingHints;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
-
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -47,10 +57,53 @@ public class MainForm extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        
 
-        headerPanel = new javax.swing.JPanel();
+        headerPanel = new javax.swing.JPanel() {
+
+            private final ImageIcon imageIcon = new ImageIcon("src/main/resources/images/cat_logo.png");
+            @Override
+            protected void paintComponent(Graphics grphcs) {
+                super.paintComponent(grphcs);
+                Graphics2D g2d = (Graphics2D) grphcs;
+                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+                // Load the properties file
+                Properties prop = new Properties();
+                try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
+                    prop.load(input);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+                // Extract and parse the color values
+                Color[] colors = new Color[3];
+                String[] colorStrings = prop.getProperty("colors_set_1").split(", "); // Change this to use different
+                                                                                      // color sets
+                for (int i = 0; i < colorStrings.length; i++) {
+                    colors[i] = Color.decode(colorStrings[i]);
+                }
+
+                int diameter = Math.max(getWidth(), getHeight());
+                float radius = diameter * 1.0f; // Increase the radius
+                float[] dist = { 0.0f, 0.5f, 1.0f };
+                RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist,
+                        colors);
+
+                g2d.setPaint(rgp);
+                g2d.fillRect(0, 0, getWidth(), getHeight());
+
+                // Draw the image
+                Image image = imageIcon.getImage();
+
+                g2d.drawImage(image, getWidth() - 125, -10, 125, 125, null);
+            }
+
+        };
         bannerText = new javax.swing.JLabel();
         naviPanel = new javax.swing.JPanel();
         homePageNaviButton = new javax.swing.JButton();
@@ -64,28 +117,30 @@ public class MainForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bannerText.setBackground(new java.awt.Color(51, 0, 51));
-        bannerText.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
-        bannerText.setForeground(new java.awt.Color(0, 51, 204));
+        bannerText.setFont(new java.awt.Font("Verdana", 1, 22)); // NOI18N
+        bannerText.setForeground(new java.awt.Color(255, 255, 255));
         bannerText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bannerText.setText("QUẢN LÝ SINH VIÊN");
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
         headerPanelLayout.setHorizontalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bannerText, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE))
-        );
+                headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(headerPanelLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(bannerText, javax.swing.GroupLayout.PREFERRED_SIZE, 283,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(484, Short.MAX_VALUE)));
         headerPanelLayout.setVerticalGroup(
-            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bannerText, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+                headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                                .addContainerGap(39, Short.MAX_VALUE)
+                                .addComponent(bannerText)
+                                .addGap(38, 38, 38)));
 
-        homePageNaviButton.setBackground(new java.awt.Color(0, 153, 255));
+        homePageNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        homePageNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        homePageNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         homePageNaviButton.setText("Trang chủ");
         homePageNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         homePageNaviButton.addActionListener(new java.awt.event.ActionListener() {
@@ -94,16 +149,21 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        departmentDirNaviButton.setBackground(new java.awt.Color(51, 153, 255));
+        departmentDirNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        departmentDirNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        departmentDirNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         departmentDirNaviButton.setText("Danh mục khoa");
-        departmentDirNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        departmentDirNaviButton
+                .setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         departmentDirNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 departmentDirNaviButtonActionPerformed(evt);
             }
         });
 
-        classDirNaviButton.setBackground(new java.awt.Color(51, 153, 255));
+        classDirNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        classDirNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        classDirNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         classDirNaviButton.setText("Danh mục lớp");
         classDirNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         classDirNaviButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,25 +172,33 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        subjectManageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
+        subjectManageNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        subjectManageNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        subjectManageNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         subjectManageNaviButton.setText("Quản lý môn");
-        subjectManageNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        subjectManageNaviButton
+                .setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         subjectManageNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subjectManageNaviButtonActionPerformed(evt);
             }
         });
 
-        studentManageNaviButton.setBackground(new java.awt.Color(51, 153, 255));
+        studentManageNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        studentManageNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        studentManageNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         studentManageNaviButton.setText("Quản lý sv");
-        studentManageNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        studentManageNaviButton
+                .setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         studentManageNaviButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 studentManageNaviButtonActionPerformed(evt);
             }
         });
 
-        scoreMangeNaviButton.setBackground(new java.awt.Color(51, 153, 255));
+        scoreMangeNaviButton.setBackground(new java.awt.Color(38, 117, 191));
+        scoreMangeNaviButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        scoreMangeNaviButton.setForeground(new java.awt.Color(255, 255, 255));
         scoreMangeNaviButton.setText("Quản lý điểm");
         scoreMangeNaviButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         scoreMangeNaviButton.addActionListener(new java.awt.event.ActionListener() {
@@ -142,30 +210,40 @@ public class MainForm extends javax.swing.JFrame {
         javax.swing.GroupLayout naviPanelLayout = new javax.swing.GroupLayout(naviPanel);
         naviPanel.setLayout(naviPanelLayout);
         naviPanelLayout.setHorizontalGroup(
-            naviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(homePageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(departmentDirNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-            .addComponent(classDirNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(subjectManageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(studentManageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(scoreMangeNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                naviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(homePageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(departmentDirNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE, 124,
+                                Short.MAX_VALUE)
+                        .addComponent(classDirNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(subjectManageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(studentManageNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(scoreMangeNaviButton, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         naviPanelLayout.setVerticalGroup(
-            naviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(naviPanelLayout.createSequentialGroup()
-                .addComponent(homePageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(departmentDirNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(classDirNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(subjectManageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(studentManageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(scoreMangeNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 153, Short.MAX_VALUE))
-        );
+                naviPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(naviPanelLayout.createSequentialGroup()
+                                .addComponent(homePageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(departmentDirNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(classDirNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(subjectManageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(studentManageNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(scoreMangeNaviButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33,
+                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 160, Short.MAX_VALUE)));
 
         contentPanel.setPreferredSize(new java.awt.Dimension(600, 1000));
         contentPanel.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -177,37 +255,41 @@ public class MainForm extends javax.swing.JFrame {
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
         contentPanelLayout.setHorizontalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE));
         contentPanelLayout.setVerticalGroup(
-            contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
+                contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(naviPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE))))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(naviPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 677,
+                                                        Short.MAX_VALUE)))));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                    .addComponent(naviPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(naviPanel, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 353,
+                                                Short.MAX_VALUE))));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

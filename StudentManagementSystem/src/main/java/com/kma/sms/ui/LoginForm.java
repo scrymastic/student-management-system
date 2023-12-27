@@ -128,7 +128,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_loginButtonActionPerformed
         // Get username and password
         String username = userNameInputField.getText();
-        String password = PasswordInputField.getText();
+        String password = new String(PasswordInputField.getPassword());
 
         String message = LoginFormController.getLoginMessage(username, password);
 

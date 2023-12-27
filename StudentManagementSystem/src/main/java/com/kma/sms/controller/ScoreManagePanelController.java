@@ -4,6 +4,7 @@
  */
 package com.kma.sms.controller;
 
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.ScoreDAO;
 import com.kma.sms.model.Score;
 import java.util.ArrayList;
@@ -27,7 +28,6 @@ public class ScoreManagePanelController {
         // If a field is empty, I will set it to null
         if (studentId.isEmpty())
             studentId = null;
-
         Score sc = new Score(studentId);
         List<Score> scoreList = ScoreDAO.getScoreById(sc);
         return scoreList;
@@ -45,7 +45,10 @@ public class ScoreManagePanelController {
     }
 
     public static String getStudentEditMessage(String subjectId, String subjectName, String score) {
-
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền cập nhật";
+        }
         if (score.isEmpty() || subjectId.isEmpty() || subjectName.isEmpty())
             return "Điểm không được để trống";
         float checkscore = Float.parseFloat(score);
@@ -89,7 +92,10 @@ public class ScoreManagePanelController {
     }
 
     public static String getStudentInsertMessage(String studentid, String subjectId, String subjectName, String score) {
-
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền thêm";
+        }
         if (score.isEmpty() || subjectId.isEmpty() || subjectName.isEmpty())
             return "Còn ô để trống";
         float checkscore = Float.parseFloat(score);
@@ -137,7 +143,10 @@ public class ScoreManagePanelController {
     }
 
     public static String getStudentDeleteMessage(String studentid, String subjectId, String subjectName, String score) {
-
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền xóa";
+        }
         if (subjectId.isEmpty() || subjectName.isEmpty())
             return "Mã sinh viên và môn học không được để trống";
 

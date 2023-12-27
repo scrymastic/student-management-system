@@ -11,6 +11,10 @@ import com.kma.sms.dao.SubjectDAO;
  */
 public class SubjectDeleterController {
     public static String getSubjectDeleteMessage(String subjectId){
+        // Check if UserSession.isAdmin is true
+        if (!com.kma.sms.authen.UserSession.getIsAdmin()) {
+            return "Bạn không có quyền xóa học phần";
+        }
         int errorCode = sendDeleteRequestAndReceiveResponse(subjectId);
         String message = "";
 

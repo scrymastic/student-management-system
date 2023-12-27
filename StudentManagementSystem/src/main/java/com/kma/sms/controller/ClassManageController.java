@@ -4,6 +4,7 @@
  */
 package com.kma.sms.controller;
 
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.ClassDAO;
 
 import com.kma.sms.model.ClassRequestObject;
@@ -50,6 +51,10 @@ public class ClassManageController {
 
     // update class
     public static String getClassUpdateMessage(String classId, String majorId, String teacher) {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền cập nhật";
+        }
         int errorCode = sendUpdateRequestAndReceiveResponse(classId, majorId, teacher);
         String message = "";
         switch (errorCode) {
@@ -72,6 +77,10 @@ public class ClassManageController {
 
     // add class
     public static String getClassAddMessage(String classId, String majorId, String teacher) {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền thêm";
+        }
         if (classId.isEmpty()) return "Mã lớp không được để trống";
         else classId = classId.toUpperCase();
         if (majorId.isEmpty()) return "Mã ngành không được để trống";
@@ -99,6 +108,10 @@ public class ClassManageController {
 
     // delete class
     public static String getClassDeleteMessage(String classId) {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền xóa";
+        }
         int errorCode = sendDeleteRequestAndReceiveResponse(classId);
         String message = "";
         switch (errorCode) {

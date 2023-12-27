@@ -4,6 +4,11 @@
  */
 package com.kma.sms.controller;
 
+import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import com.kma.sms.authen.UserSessionRequest;
 
 import com.kma.sms.dao.UserDAO;
@@ -20,6 +25,7 @@ public class LoginFormController {
             // Return error message, align center
             return "Vui lòng nhập tên đăng nhập và mật khẩu";
         }
+
         
         int result = sendLoginRequestAndReceiveResponse(username, password);
         String message = "";
@@ -35,7 +41,17 @@ public class LoginFormController {
     }
 
     private static int sendLoginRequestAndReceiveResponse(String username, String password) {
-        UserSessionRequest userSessionRequest = new UserSessionRequest(username, password);
+        // hash password using SHA-256
+        String hashedPassword = "";
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hash = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            hashedPassword = String.format("%064x", new BigInteger(1, hash));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        UserSessionRequest userSessionRequest = new UserSessionRequest(username, hashedPassword);
         int result = UserDAO.login(userSessionRequest);
         return result;
     }

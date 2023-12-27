@@ -7,56 +7,20 @@ package com.kma.sms.ui;
 import com.kma.sms.controller.ScoreManagePanelController;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
-import java.awt.RenderingHints;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
-
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 /**
  *
  * @author lxsgo
  */
 public class ScoreManagePanel extends javax.swing.JPanel {
-
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        super.paintComponent(grphcs);
-        Graphics2D g2d = (Graphics2D) grphcs;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // Load the properties file
-        Properties prop = new Properties();
-        try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
-            prop.load(input);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        // Extract and parse the color values
-        Color[] colors = new Color[3];
-        String[] colorStrings = prop.getProperty("colors_set_3").split(", "); // Change this to use different color sets
-        for (int i = 0; i < colorStrings.length; i++) {
-            colors[i] = Color.decode(colorStrings[i]);
-        }
-
-        int diameter = Math.max(getWidth(), getHeight());
-        float radius = diameter * 1.0f; // Increase the radius
-        float[] dist = { 0.0f, 0.5f, 1.0f };
-        RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
-
-        g2d.setPaint(rgp);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
-    }
-
 
     /**
      * Creates new form ScoreManagePanel
@@ -92,9 +56,37 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         scoreTable = new javax.swing.JTable();
         subjectNameTextField = new javax.swing.JTextField();
 
+
+        /* BELOW IS THE CODE FOR CUSTOMIZING THE TABLE */
+        // Set the header color
+        JTableHeader header = scoreTable.getTableHeader();
+        header.setBackground(Color.decode("#8B0000"));
+        header.setForeground(Color.WHITE);
+
+        // Set the row color
+        Color color1 = Color.decode("#E0E0E0");
+        Color color2 = Color.WHITE; // Replace with the actual color you want
+        
+        scoreTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                c.setBackground(row % 2 == 0 ? color1 : color2);
+                if (isSelected) {
+                    c.setBackground(Color.decode("#2675BF"));
+                    c.setForeground(Color.WHITE);
+                } else {
+                    c.setBackground(row % 2 == 0 ? color1 : color2);
+                    c.setForeground(Color.BLACK);
+                }
+                return c;
+            }
+        });
+
+        /* END OF CUSTOMIZING THE TABLE */
+
         setPreferredSize(new java.awt.Dimension(500, 540));
 
-        studentIdLabel.setForeground(new java.awt.Color(255, 255, 255));
         studentIdLabel.setText("Mã sv:");
 
         studentIdInput.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +102,6 @@ public class ScoreManagePanel extends javax.swing.JPanel {
             }
         });
 
-        gpaLabel.setForeground(new java.awt.Color(255, 255, 255));
         gpaLabel.setText("GPA:");
 
         gpaTextField.setEditable(false);
@@ -145,24 +136,13 @@ public class ScoreManagePanel extends javax.swing.JPanel {
         footerLabel.setEnabled(false);
         footerLabel.setFocusable(false);
 
-        studentNameLabel.setForeground(new java.awt.Color(255, 255, 255));
         studentNameLabel.setText("Tên sv:");
 
         studentNameTextField.setEditable(false);
 
         scoreTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "STT", "Mã môn", "Tên môn", "Điểm"

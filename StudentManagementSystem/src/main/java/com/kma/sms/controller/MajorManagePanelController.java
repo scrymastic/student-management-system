@@ -6,6 +6,7 @@ package com.kma.sms.controller;
 
 import java.util.List;
 
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.MajorDAO;
 import com.kma.sms.model.Major;
 
@@ -16,6 +17,10 @@ import com.kma.sms.model.Major;
 public class MajorManagePanelController {
 
     public static List<List<String>> getMajorListString() {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return null;
+        }
         List<Major> majorList = MajorDAO.getAllMajors();
         List<List<String>> majorListString = new java.util.ArrayList<List<String>>();
         for (Major major : majorList) {

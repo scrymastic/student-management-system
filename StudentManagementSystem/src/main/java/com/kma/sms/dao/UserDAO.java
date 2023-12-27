@@ -35,10 +35,10 @@ public class UserDAO {
             //     return 0;
             // }
             // SQL injection prevention
-            String query = "SELECT * FROM accounts WHERE username = ? AND password = ?";
+            String query = "SELECT * FROM accounts WHERE username = ? AND hashed_password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, userSessionRequest.getUsername());
-            preparedStatement.setString(2, userSessionRequest.getPassword());
+            preparedStatement.setString(2, userSessionRequest.getHashedPassword());
 
             System.out.println(preparedStatement);
 

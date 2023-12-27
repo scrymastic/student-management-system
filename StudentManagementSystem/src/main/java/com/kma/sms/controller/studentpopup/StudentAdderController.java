@@ -4,6 +4,7 @@
  */
 package com.kma.sms.controller.studentpopup;
 
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.StudentDAO;
 import com.kma.sms.model.Student;
 
@@ -14,6 +15,10 @@ import com.kma.sms.model.Student;
 public class StudentAdderController {
 
     public static String getStudentSAddMessage(String studentId, String classId, String studentName, String dateOfBirth, String gender, String address, String telephone) {
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền thêm sinh viên";
+        }
         // check if studentId or studentName is empty
         String message = "";
         if (studentId.isEmpty() || studentName.isEmpty()) {

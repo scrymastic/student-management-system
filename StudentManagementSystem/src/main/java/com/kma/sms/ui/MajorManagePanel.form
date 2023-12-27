@@ -113,9 +113,6 @@
     </Component>
     <Component class="javax.swing.JLabel" name="numOfStudentsLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1;:"/>
       </Properties>
     </Component>
@@ -134,17 +131,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="numOfMalesLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Nam:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="numOfFemalesLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="N&#x1eef;:"/>
       </Properties>
     </Component>
@@ -163,17 +154,11 @@
     </Component>
     <Component class="javax.swing.JLabel" name="avgScoreLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="&#x110;i&#x1ec3;m tb:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="excellentLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Xu&#x1ea5;t s&#x1eaf;c:"/>
       </Properties>
     </Component>
@@ -243,17 +228,11 @@
     </Container>
     <Component class="javax.swing.JLabel" name="goodLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Gi&#x1ecf;i:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="intermediateLabel">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Kh&#xe1;:"/>
       </Properties>
     </Component>

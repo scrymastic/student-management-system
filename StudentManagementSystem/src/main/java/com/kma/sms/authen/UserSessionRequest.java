@@ -10,11 +10,11 @@ package com.kma.sms.authen;
  */
 public class UserSessionRequest {
     String username;
-    String password;
+    String hashedPassword;
 
-    public UserSessionRequest(String username, String password) {
+    public UserSessionRequest(String username, String hashedPassword) {
         this.username = username;
-        this.password = password;
+        this.hashedPassword = hashedPassword;
     }
 
     // gettter and setter
@@ -22,8 +22,8 @@ public class UserSessionRequest {
         return username;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHashedPassword() {
+        return hashedPassword;
     }
     
 }

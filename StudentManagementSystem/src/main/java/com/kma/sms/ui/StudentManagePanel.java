@@ -7,16 +7,7 @@ package com.kma.sms.ui;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
-import java.awt.RenderingHints;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
-import java.util.Properties;
-
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -32,35 +23,6 @@ import com.kma.sms.ui.studentpopup.*;
  */
 public class StudentManagePanel extends javax.swing.JPanel {
 
-    // @Override
-    // protected void paintComponent(Graphics grphcs) {
-    //     super.paintComponent(grphcs);
-    //     Graphics2D g2d = (Graphics2D) grphcs;
-    //     g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-    //     // Load the properties file
-    //     Properties prop = new Properties();
-    //     try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
-    //         prop.load(input);
-    //     } catch (IOException ex) {
-    //         ex.printStackTrace();
-    //     }
-
-    //     // Extract and parse the color values
-    //     Color[] colors = new Color[3];
-    //     String[] colorStrings = prop.getProperty("colors_set_2").split(", "); // Change this to use different color sets
-    //     for (int i = 0; i < colorStrings.length; i++) {
-    //         colors[i] = Color.decode(colorStrings[i]);
-    //     }
-
-    //     int diameter = Math.max(getWidth(), getHeight());
-    //     float radius = diameter * 1.0f; // Increase the radius
-    //     float[] dist = { 0.0f, 0.5f, 1.0f };
-    //     RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
-
-    //     g2d.setPaint(rgp);
-    //     g2d.fillRect(0, 0, getWidth(), getHeight());
-    // }
 
     /**
      * Creates new form StudentManagePanel
@@ -97,7 +59,11 @@ public class StudentManagePanel extends javax.swing.JPanel {
         addressLabel = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
         studentTable = new javax.swing.JTable();
+        addStudentButton = new javax.swing.JButton();
+        footerLabel = new javax.swing.JLabel();
 
+
+        
         /* BELOW IS THE CODE FOR CUSTOMIZING THE TABLE */
         // Set the header color
         JTableHeader header = studentTable.getTableHeader();
@@ -125,9 +91,7 @@ public class StudentManagePanel extends javax.swing.JPanel {
         });
 
         /* END OF CUSTOMIZING THE TABLE */
-
-        addStudentButton = new javax.swing.JButton();
-        footerLabel = new javax.swing.JLabel();
+        
 
         editItem.setText("edit");
         editItem.addActionListener(new java.awt.event.ActionListener() {

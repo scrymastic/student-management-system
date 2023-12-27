@@ -5,6 +5,7 @@ package com.kma.sms.controller.studentpopup;
  */
 
 
+import com.kma.sms.authen.UserSession;
 import com.kma.sms.dao.StudentDAO;
 
 /**
@@ -13,6 +14,10 @@ import com.kma.sms.dao.StudentDAO;
  */
 public class StudentDeleterController {
     public static String getStudentDeleteMessage(String studentId){
+        // Check if UserSession.isAdmin is true
+        if (!UserSession.getIsAdmin()) {
+            return "Bạn không có quyền xóa sinh viên";
+        }
         int errorCode = sendDeleteRequestAndReceiveResponse(studentId);
         String message = "";
 

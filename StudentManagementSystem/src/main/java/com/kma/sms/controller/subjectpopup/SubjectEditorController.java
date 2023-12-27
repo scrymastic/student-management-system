@@ -12,6 +12,10 @@ import com.kma.sms.model.Subject;
  */
 public class SubjectEditorController {
     public static String getSubjectEditMessage(String subjectId,String majorId,String subjectName,String credits,String subjectIdOld){
+        // Check if UserSession.isAdmin is true
+        if (!com.kma.sms.authen.UserSession.getIsAdmin()) {
+            return "Bạn không có quyền sửa học phần";
+        }
         if(subjectName.isEmpty()){
             return "Tên học phần không được để trống.";
         }

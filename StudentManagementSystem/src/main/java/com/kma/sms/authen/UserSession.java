@@ -10,7 +10,7 @@ package com.kma.sms.authen;
  * @author author's_name_goes_here
  */
 public class UserSession {
-    public static Boolean isAdmin;
+    private static Boolean isAdmin;
 
     public static Boolean getIsAdmin() {
         return isAdmin;

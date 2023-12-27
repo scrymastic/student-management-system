@@ -5,15 +5,11 @@
 package com.kma.sms.ui;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RadialGradientPaint;
-import java.awt.RenderingHints;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.awt.Component;
 import java.util.List;
-import java.util.Properties;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 
 import com.kma.sms.controller.MajorManagePanelController;
 
@@ -22,35 +18,6 @@ import com.kma.sms.controller.MajorManagePanelController;
  * @author lxsgo
  */
 public class MajorManagePanel extends javax.swing.JPanel {
-    @Override
-    protected void paintComponent(Graphics grphcs) {
-        super.paintComponent(grphcs);
-        Graphics2D g2d = (Graphics2D) grphcs;
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // Load the properties file
-        Properties prop = new Properties();
-        try (InputStream input = new FileInputStream("src/main/resources/background.properties")) {
-            prop.load(input);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        // Extract and parse the color values
-        Color[] colors = new Color[3];
-        String[] colorStrings = prop.getProperty("colors_set_4").split(", "); // Change this to use different color sets
-        for (int i = 0; i < colorStrings.length; i++) {
-            colors[i] = Color.decode(colorStrings[i]);
-        }
-
-        int diameter = Math.max(getWidth(), getHeight());
-        float radius = diameter * 1.0f; // Increase the radius
-        float[] dist = { 0.0f, 0.5f, 1.0f };
-        RadialGradientPaint rgp = new RadialGradientPaint(getWidth() - 50, getHeight() - 50, radius, dist, colors);
-
-        g2d.setPaint(rgp);
-        g2d.fillRect(0, 0, getWidth(), getHeight());
-    }
 
     /**
      * Creates new form MajorManagePanel
@@ -88,11 +55,40 @@ public class MajorManagePanel extends javax.swing.JPanel {
         footerLabel = new javax.swing.JLabel();
         alignmentButton = new javax.swing.JButton();
 
+
+        /* BELOW IS THE CODE FOR CUSTOMIZING THE TABLE */
+        // Set the header color
+        JTableHeader header = majorTable.getTableHeader();
+        header.setBackground(Color.decode("#8B0000"));
+        header.setForeground(Color.WHITE);
+
+        // Set the row color
+        Color color1 = Color.decode("#E0E0E0");
+        Color color2 = Color.WHITE; // Replace with the actual color you want
+        
+        majorTable.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                c.setBackground(row % 2 == 0 ? color1 : color2);
+                if (isSelected) {
+                    c.setBackground(Color.decode("#2675BF"));
+                    c.setForeground(Color.WHITE);
+                } else {
+                    c.setBackground(row % 2 == 0 ? color1 : color2);
+                    c.setForeground(Color.BLACK);
+                }
+                return c;
+            }
+        });
+
+        /* END OF CUSTOMIZING THE TABLE */
+  
+
         setPreferredSize(new java.awt.Dimension(500, 540));
 
         numOfStudentsField.setEditable(false);
 
-        numOfStudentsLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfStudentsLabel.setText("Tổng số:");
 
         numOfMalesField.setEditable(false);
@@ -104,10 +100,8 @@ public class MajorManagePanel extends javax.swing.JPanel {
 
         numOfFemalesField.setEditable(false);
 
-        numOfMalesLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfMalesLabel.setText("Nam:");
 
-        numOfFemalesLabel.setForeground(new java.awt.Color(255, 255, 255));
         numOfFemalesLabel.setText("Nữ:");
 
         avgScoreField.setEditable(false);
@@ -119,10 +113,8 @@ public class MajorManagePanel extends javax.swing.JPanel {
             }
         });
 
-        avgScoreLabel.setForeground(new java.awt.Color(255, 255, 255));
         avgScoreLabel.setText("Điểm tb:");
 
-        excellentLabel.setForeground(new java.awt.Color(255, 255, 255));
         excellentLabel.setText("Xuất sắc:");
 
         majorTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -153,10 +145,8 @@ public class MajorManagePanel extends javax.swing.JPanel {
         });
         majorTableScrollPane.setViewportView(majorTable);
 
-        goodLabel.setForeground(new java.awt.Color(255, 255, 255));
         goodLabel.setText("Giỏi:");
 
-        intermediateLabel.setForeground(new java.awt.Color(255, 255, 255));
         intermediateLabel.setText("Khá:");
 
         goodField.setEditable(false);
@@ -322,7 +312,9 @@ public class MajorManagePanel extends javax.swing.JPanel {
     public void updateTable() {
         // update table
         List<List<String>> majorListString = MajorManagePanelController.getMajorListString();
-
+        if (majorListString == null) {
+            return;
+        }
         javax.swing.table.DefaultTableModel tableModel = (javax.swing.table.DefaultTableModel) majorTable.getModel();
         tableModel.setRowCount(0);
 

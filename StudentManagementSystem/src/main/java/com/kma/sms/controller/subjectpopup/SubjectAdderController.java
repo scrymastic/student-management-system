@@ -12,6 +12,10 @@ import com.kma.sms.model.Subject;
  */
 public class SubjectAdderController {
     public static String getSubjectSAddMessage(String subjectId,String majorId,String subjectName,String credits){
+        // Check if UserSession.isAdmin is true
+        if (!com.kma.sms.authen.UserSession.getIsAdmin()) {
+            return "Bạn không có quyền thêm học phần";
+        }
         String message="";
         if(subjectId.isEmpty()||subjectName.isEmpty()){
             message="Mã học phần và tên học phần không được để trống.";
