@@ -29,6 +29,10 @@
     - [e. Quản lý môn](#e-quản-lý-môn-subjectmanagepanel)
     - [f. Danh mục lớp](#f-danh-mục-lớp-classmanagepanel)
 
+[IV. KẾT LUẬN](#iv-kết-luận)
+
+[V. TÀI LIỆU THAM KHẢO](#v-tài-liệu-tham-khảo)
+
 ## NỘI DUNG
 ### I. KHẢO SÁT, MÔ TẢ YÊU CẦU BÀI TOÁN
 #### 1. MÔ TẢ YÊU CẦU
