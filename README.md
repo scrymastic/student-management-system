@@ -60,7 +60,28 @@ Lợi thế:
 
 ### 2. THIẾT KẾ CƠ SỞ DỮ LIỆU
 
+Sơ đồ cơ sở dữ liệu chính, gồm các bảng, các trường, các khóa chính, khóa ngoại và mối quan hệ giữa các bảng:
+
 ![Alt text](./README-images/image1.png)
+
+Cơ sở dữ liệu gồm các bảng: `accounts`, `majors`, `classes`, `subjects`, `students`, `scores`
+> Trên sơ đồ không biểu diễn bảng `accounts`, bảng này độc lập, không có mối quan hệ với các bảng khác.
+
+Trong đó:
+- `accounts`: lưu trữ thông tin về tài khoản người dùng
+- `majors`: lưu trữ thông tin về khoa
+- `classes`: lưu trữ thông tin về lớp
+- `subjects`: lưu trữ thông tin về môn học
+- `students`: lưu trữ thông tin về sinh viên
+- `scores`: lưu trữ thông tin về điểm học phần
+
+Câu lệnh tạo cơ sở dữ liệu nằm tại `src/resources/`:
+- `AccountsDatabase.sql`: tạo bảng `accounts`
+- `DatabaseInit.sql`: tạo bảng `majors`, `classes`, `subjects`, `students`, `scores`, thêm dữ liệu mẫu
+
+Cơ sở dữ liệu được lưu trữ trên máy chủ MySQL, thông tin kết nối được lưu trữ tại `src/resources/database.properties`
+
+
 
 ### 3. CẤU TRÚC DỰ ÁN
 ```
