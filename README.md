@@ -8,26 +8,26 @@
 
 ## MỤC LỤC
 
-[I. KHẢO SÁT, MÔ TẢ YÊU CẦU BÀI TOÁN](#khao-sat-mo-ta-yeu-cau-bai-toan)
-- [1. MÔ TẢ YÊU CẦU](#mo-ta-yeu-cau)
-- [2. PHÂN LOẠI NGƯỜI DÙNG](#phan-loai-nguoi-dung)
+[I. KHẢO SÁT, MÔ TẢ YÊU CẦU BÀI TOÁN](#i-khảo-sát-mô-tả-yêu-cầu-bài-toán)
+- [1. MÔ TẢ YÊU CẦU](#1-mô-tả-yêu-cầu)
+- [2. PHÂN LOẠI NGƯỜI DÙNG](#2-phân-loại-người-dùng)
 
-[II. PHÂN TÍCH THIẾT KẾ](#phan-tich-thiet-ke)
-- [1. TỔNG QUAN](#tong-quan)
-- [2. THIẾT KẾ CƠ SỞ DỮ LIỆU](#thiet-ke-co-so-du-lieu)
-- [3. CẤU TRÚC DỰ ÁN](#cau-truc-du-an)
-- [4. LUỒNG HOẠT ĐỘNG](#luong-hoat-dong)
-- [5. PHÂN RÃ CHỨC NĂNG](#phan-ra-chuc-nang)
+[II. PHÂN TÍCH THIẾT KẾ](#ii-phân-tích-thiết-kế)
+- [1. TỔNG QUAN](#1-tổng-quan)
+- [2. THIẾT KẾ CƠ SỞ DỮ LIỆU](#2-thiết-kế-cơ-sở-dữ-liệu)
+- [3. CẤU TRÚC DỰ ÁN](#3-cấu-trúc-dự-án)
+- [4. LUỒNG HOẠT ĐỘNG](#4-luồng-hoạt-động)
+- [5. PHÂN RÃ CHỨC NĂNG](#5-phân-rã-chức-năng)
 
-[III. DEMO SẢN PHẨM](#demo-san-pham)
-- [1. FORM ĐĂNG NHẬP](#form-dang-nhap)
-- [2. MÀN HÌNH CHÍNH](#man-hinh-chinh)
-    - [a. Trang chủ](#trang-chu)
-    - [b. Danh mục khoa](#danh-muc-khoa)
-    - [c. Quản lý sinh viên](#quan-ly-sinh-vien)
-    - [d. Quản lý điểm](#quan-ly-diem)
-    - [e. Quản lý môn](#quan-ly-mon)
-    - [f. Danh mục lớp](#danh-muc-lop)
+[III. DEMO SẢN PHẨM](#iii-demo-sản-phẩm)
+- [1. FORM ĐĂNG NHẬP](#1-form-đăng-nhập)
+- [2. MÀN HÌNH CHÍNH](#2-màn-hình-chính)
+    - [a. Trang chủ](#a-trang-chủ-homepagepanel)
+    - [b. Danh mục khoa](#b-danh-mục-khoa-majormanagepanel)
+    - [c. Quản lý sinh viên](#c-quản-lý-sinh-viên-studentmanagepanel)
+    - [d. Quản lý điểm](#d-quản-lý-điểm-scoremanagepanel)
+    - [e. Quản lý môn](#e-quản-lý-môn-subjectmanagepanel)
+    - [f. Danh mục lớp](#f-danh-mục-lớp-classmanagepanel)
 
 ## NỘI DUNG
 ### I. KHẢO SÁT, MÔ TẢ YÊU CẦU BÀI TOÁN
@@ -56,6 +56,7 @@ Lợi thế:
 
 ### 2. THIẾT KẾ CƠ SỞ DỮ LIỆU
 
+![Alt text](./README-images/image1.png)
 
 ### 3. CẤU TRÚC DỰ ÁN
 ```
@@ -137,15 +138,18 @@ StudentManagementSystem
     - `Utility`: nhiệm vụ tạo lập kết nối đến csdl
 
 ### 4.LUỒNG HOẠT ĐỘNG
-![Alt text](./README-images/image.png)
+
+![Alt text](./README-images/image2.png)
 
 ### 5.PHÂN RÃ CHỨC NĂNG
-![Alt text](./README-images/image-1.png)
+
+![Alt text](./README-images/image3.png)
 
 ## III.DEMO SẢN PHẨM
 
 ### 1.FORM ĐĂNG NHẬP (LoginForm)
-![Alt text](./README-images/image-2.png)
+
+![Alt text](./README-images/image4.png)
 
 Gồm:
 ```java
@@ -263,7 +267,8 @@ Sau khi nhận kết nối từ `util.DatabaseConnection`, thực hiện tạo c
 Nếu `username` và `hashed_password` đúng, tạo `UserSession`, trả về 1, sau đó người dùng có thể vào màn hình chính.
 
 Nếu không đúng, hiện lỗi:
-![Alt text](./README-images/image-3.png)
+
+![Alt text](./README-images/image5.png)
 
 `Util`:
 ```java
@@ -302,7 +307,8 @@ Các chức năng sau này đều hoạt động với nguyên lý cơ bản tư
 ## 2.MÀN HÌNH CHÍNH (mainForm)
 
 ### a. Trang chủ (homePagePanel)
-![Alt text](./README-images/image-4.png)
+
+![Alt text](./README-images/image6.png)
 
 Màn hình chính chia làm 3 khu vực:
 ```java
@@ -377,7 +383,7 @@ Chỉ admin có quyền xem ***Danh mục khoa*** và các thống kê liên qua
     private javax.swing.JTextField numOfStudentsField;
 
 ```
-![Alt text](./README-images/image-5.png)
+![Alt text](./README-images/image7.png)
 
 Các trường thông tin được cập nhật mỗi khi người dùng chọn khoa trên bảng.
 
@@ -444,7 +450,8 @@ Thành phần:
     private javax.swing.JScrollPane tableScrollPane;
 ```
 
-![Alt text](./README-images/image-6.png)
+![Alt text](./README-images/image8.png)
+
 `Guest` chỉ có quyền xem, không thể thêm, sửa, xóa.
 Kiểm tra quyền trước khi thực hiện hành động:
 ```java
@@ -454,62 +461,62 @@ Kiểm tra quyền trước khi thực hiện hành động:
 ```
 Thông báo
 
-![Alt text](./README-images/image-7.png)
+![Alt text](./README-images/image9.png)
 
 **Thêm sinh viên**
 
-![Alt text](./README-images/image-8.png)
+![Alt text](./README-images/image10.png)
 
 Nhấn nút `Add`, có cửa sổ bật lên, điền thông tin
 `save` để lưu, `cancel` để hủy
 
 Thông báo
 
-![Alt text](./README-images/image-9.png)
+![Alt text](./README-images/image11.png)
 
 Bảng sinh viên được cập nhật ngay sau đó
 
-![Alt text](./README-images/image-10.png)
+![Alt text](./README-images/image12.png)
 
 **Sửa sinh viên**
 
 Nhấn chuột phải vào sinh viên cần sửa, chọn `edit`
 
-![Alt text](./README-images/image-11.png)
+![Alt text](./README-images/image13.png)
 
 Sửa các trường cần thiết
 
-![Alt text](./README-images/image-12.png)
+![Alt text](./README-images/image14.png)
 
 `Save` để lưu thay đổi, `cancel` để hủy
 
 Thông báo
 
-![Alt text](./README-images/image-13.png)
+![Alt text](./README-images/image15.png)
 
 Bảng sinh viên được cập nhật ngay
 
-![Alt text](./README-images/image-14.png)
+![Alt text](./README-images/image16.png)
 
 **Xóa sinh viên**
 
 Nhấp chột phải vào sinh viên cần xóa, chọn delete. Xác nhận
 
-![Alt text](./README-images/image-15.png)
+![Alt text](./README-images/image17.png)
 
 Thông báo
 
-![Alt text](./README-images/image-16.png)
+![Alt text](./README-images/image18.png)
 
 Bảng được cập nhật, không còn sinh viên đó nữa.
 
-![Alt text](./README-images/image-17.png)
+![Alt text](./README-images/image19.png)
 
 > Lưu ý: Do tham chiếu khóa ngoại giữa các bảng, không thể thêm sinh viên vào lớp. Thay vào đó, cần tạo lớp trước. Tương tự với các trường hợp khác.
 
 ### d. Quản lý điểm (scoreManagePanel)
 
-![Alt text](./README-images/image-18.png)
+![Alt text](./README-images/image20.png)
 
 > Do đây là project học tập, nên nhóm muốn triển khai thêm các tiếp cận khác. Ở đây giao diện làm việc bố trí hơi khác so với phần sinh viên, nhưng chức năng, phần xử lý “backend” vẫn tương tự. Vậy nhóm xin phép chỉ giới thiệu giao diện.
 
@@ -519,35 +526,35 @@ Người dùng với quyền admin có thể sửa các trường đó, nhấn `
 
 **Update điểm**
 
-![Alt text](./README-images/image-19.png)
+![Alt text](./README-images/image21.png)
 
 Sau đó, bảng điểm được cập nhật
 
-![Alt text](./README-images/image-20.png)
+![Alt text](./README-images/image22.png)
 
 **Insert điểm**
 
-![Alt text](./README-images/image-21.png)
+![Alt text](./README-images/image23.png)
 
 **Delete điểm**
 
 Xác nhận delete điểm:
 
-![Alt text](./README-images/image-22.png)
+![Alt text](./README-images/image24.png)
 
 Xóa thành công
 
-![Alt text](./README-images/image-23.png)
+![Alt text](./README-images/image25.png)
 
 Và bảng điểm được cập nhật
 
 ### e. Quản lý môn (subjectManagePanel)
 
-![Alt text](./README-images/image-24.png)
+![Alt text](./README-images/image26.png)
 
 ### f. Danh mục lớp (classManagePanel)
 
-![Alt text](./README-images/image-25.png)
+![Alt text](./README-images/image27.png)
 
 ## IV. KẾT LUẬN
 
