@@ -35,7 +35,6 @@ public class MainForm extends javax.swing.JFrame {
         contentPanel.add(new SubjectManagePanel(), "subjectManagePanel");
         contentPanel.add(new StudentManagePanel(), "studentManagePanel");
         contentPanel.add(new ScoreManagePanel(), "scoreManagePanel");
-        // cardLayout.show(contentPanel, "homePagePanel");
 
         // always fit the content panel to the parent panel
         this.pack();

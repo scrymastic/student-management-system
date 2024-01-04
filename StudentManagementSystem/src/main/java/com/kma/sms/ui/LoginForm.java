@@ -129,7 +129,6 @@ public class LoginForm extends javax.swing.JFrame {
         // Get username and password
         String username = userNameInputField.getText();
         String password = new String(PasswordInputField.getPassword());
-
         String message = LoginFormController.getLoginMessage(username, password);
 
         // If login success, open main form
@@ -144,7 +143,7 @@ public class LoginForm extends javax.swing.JFrame {
             // Show error message
             javax.swing.JOptionPane.showMessageDialog(this, message);
         }
-
+        
     }// GEN-LAST:event_loginButtonActionPerformed
 
     private void userNameInputFieldKeyPressed(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_userNameInputFieldKeyPressed

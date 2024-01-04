@@ -25,8 +25,6 @@ public class LoginFormController {
             // Return error message, align center
             return "Vui lòng nhập tên đăng nhập và mật khẩu";
         }
-
-        
         int result = sendLoginRequestAndReceiveResponse(username, password);
         String message = "";
         switch (result) {

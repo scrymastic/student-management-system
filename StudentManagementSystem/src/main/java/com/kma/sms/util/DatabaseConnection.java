@@ -32,9 +32,6 @@ public class DatabaseConnection {
             user = prop.getProperty("db.user");
             password = prop.getProperty("db.password");
 
-            // Optional: Register JDBC driver
-            // Class.forName("com.mysql.cj.jdbc.Driver");
-
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Failed to load database properties", e);

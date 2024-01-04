@@ -6,13 +6,9 @@ package com.kma.sms.dao;
 
 import com.kma.sms.model.Major;
 
-import com.kma.sms.model.ClassRequestObject;
 import com.kma.sms.util.DatabaseConnection;
-import com.mysql.cj.jdbc.exceptions.MySQLQueryInterruptedException;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
