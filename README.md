@@ -75,11 +75,11 @@ Trong đó:
 - `students`: lưu trữ thông tin về sinh viên
 - `scores`: lưu trữ thông tin về điểm học phần
 
-Câu lệnh tạo cơ sở dữ liệu nằm tại `src/resources/`:
+Câu lệnh tạo cơ sở dữ liệu nằm tại `src/main/resources`:
 - `AccountsDatabase.sql`: tạo bảng `accounts`
 - `DatabaseInit.sql`: tạo bảng `majors`, `classes`, `subjects`, `students`, `scores`, thêm dữ liệu mẫu
 
-Cơ sở dữ liệu được lưu trữ trên máy chủ MySQL, thông tin kết nối được lưu trữ tại `src/resources/database.properties`
+Cơ sở dữ liệu được lưu trữ trên máy chủ MySQL, thông tin kết nối được lưu trữ tại `src/main/resources/database.properties`
 
 
 
@@ -133,7 +133,7 @@ StudentManagementSystem
 - Thông tin về build config
 - Các thông tin khác
 
-***src/resources:***
+***src/main/resources:***
 - Câu lệnh tạo cơ sở dữ liệu, tài khoản người dùng (`.sql`)
 - File cấu hình, thông tin về một số đối tượng (`.properties`)
 - Images: folder chứa các file ảnh được dùng trong dự án
